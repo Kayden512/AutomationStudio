@@ -1,0 +1,14 @@
+[
+  {
+    "$type": "Automation.PluginCore.Base.Device.PLC.TestTool, Automation.PluginCore",
+    "Items": [],
+    "Name": "A",
+    "guid": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "$type": "Automation.PluginCore.Base.Device.PLC.TestTool, Automation.PluginCore",
+    "Items": [],
+    "Name": "B",
+    "guid": "00000000-0000-0000-0000-000000000000"
+  }
+]
