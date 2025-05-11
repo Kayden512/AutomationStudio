@@ -185,5 +185,14 @@
   <ItemGroup>
     <Resource Include="Image\frown.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\info.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

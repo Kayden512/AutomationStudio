@@ -100,6 +100,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\ActionViewModel.cs" />
     <Compile Include="ViewModel\CustomScreenEditorViewModel.cs" />
+    <Compile Include="ViewModel\ErrorListViewModel.cs" />
     <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\PropertyEditorViewModel.cs" />
     <Compile Include="View\ActionView.xaml.cs">
@@ -107,6 +108,9 @@
     </Compile>
     <Compile Include="View\CustomScreenEditorView.xaml.cs">
       <DependentUpon>CustomScreenEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErrorListView.xaml.cs">
+      <DependentUpon>ErrorListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DeviceGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErrorListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

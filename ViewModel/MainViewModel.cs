@@ -23,6 +23,7 @@ namespace AutomationStudio.ViewModel
         public ActionViewModel action;
         public PropertyEditorViewModel propertyEditor;
         public LogViewModel log;
+        public ErrorListViewModel errorList;
 
         IDocument _activeDocument;
         public IDocument ActiveDocument
@@ -65,7 +66,8 @@ namespace AutomationStudio.ViewModel
             action = new ActionViewModel();
             propertyEditor = new PropertyEditorViewModel();
             log = new LogViewModel();
-            Panels = new ObservableCollection<IViewModel>() {  deviceGroup, propertyEditor, action , CustomScreenEditor, log};
+            errorList = new ErrorListViewModel();
+            Panels = new ObservableCollection<IViewModel>() {  deviceGroup, propertyEditor, action , CustomScreenEditor, log, errorList };
             foreach (INode node in Panels)
             {
                 node.PropertyChanged += viewModelPropertyChanged;
