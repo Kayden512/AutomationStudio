@@ -3,27 +3,27 @@
   <RootPanel Orientation="Horizontal">
     <LayoutAnchorablePaneGroup Orientation="Vertical" DockWidth="0.245915751512584*">
       <LayoutAnchorablePane Id="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" DockWidth="0.333333333333333*" FloatingWidth="210" FloatingHeight="397" FloatingLeft="210" FloatingTop="427">
-        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Device" IsSelected="True" ContentId="Device" FloatingLeft="210" FloatingTop="427" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/11/2025 21:19:55" />
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Device" IsSelected="True" ContentId="Device" FloatingLeft="210" FloatingTop="427" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:40" />
       </LayoutAnchorablePane>
       <LayoutAnchorablePaneGroup Orientation="Horizontal" FloatingWidth="210" FloatingHeight="397" FloatingLeft="315" FloatingTop="470">
-        <LayoutAnchorablePane DockWidth="0.333333333333333*" FloatingWidth="210" FloatingHeight="397" FloatingLeft="315" FloatingTop="470">
-          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Action" IsSelected="True" ContentId="Action" FloatingLeft="315" FloatingTop="470" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/11/2025 20:20:11" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="1" />
+        <LayoutAnchorablePane Id="03cfb4f7-78f2-427d-ae4b-a4c54e81614f" DockWidth="0.333333333333333*" FloatingWidth="210" FloatingHeight="397" FloatingLeft="315" FloatingTop="470">
+          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Action" IsSelected="True" ContentId="Action" FloatingLeft="315" FloatingTop="470" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:42" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="1" />
         </LayoutAnchorablePane>
       </LayoutAnchorablePaneGroup>
     </LayoutAnchorablePaneGroup>
     <LayoutPanel Orientation="Horizontal" DockWidth="0.572411227338395*">
       <LayoutDocumentPaneGroup Orientation="Vertical">
-        <LayoutDocumentPane DockHeight="0.5*">
-          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="UI Editor" IsSelected="True" ContentId="UI Editor" FloatingLeft="777" FloatingTop="417" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/11/2025 22:46:16" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="3" />
+        <LayoutDocumentPane Id="9018681f-b333-4efe-88a9-41828b17fd1e" DockHeight="0.5*">
+          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="UI Editor" IsSelected="True" ContentId="UI Editor" FloatingLeft="777" FloatingTop="417" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:43" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="3" />
         </LayoutDocumentPane>
-        <LayoutDocumentPane DockHeight="0.5*">
-          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Error List" IsSelected="True" IsLastFocusedDocument="True" ContentId="Error List" FloatingLeft="451" FloatingTop="375" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/11/2025 22:46:16" PreviousContainerId="258c4482-9171-4ddf-8d6c-b0d7142bd771" PreviousContainerIndex="0" />
-          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Log" ContentId="Log" FloatingLeft="578" FloatingTop="440" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/11/2025 22:41:27" PreviousContainerId="258c4482-9171-4ddf-8d6c-b0d7142bd771" PreviousContainerIndex="1" />
+        <LayoutDocumentPane Id="6cfd1edf-39c6-4140-be79-0f09c33bf43e" DockHeight="0.5*">
+          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Error List" IsSelected="True" IsLastFocusedDocument="True" ContentId="Error List" FloatingLeft="451" FloatingTop="375" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:46" PreviousContainerId="258c4482-9171-4ddf-8d6c-b0d7142bd771" PreviousContainerIndex="0" />
+          <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Log" ContentId="Log" FloatingLeft="578" FloatingTop="440" FloatingWidth="210" FloatingHeight="397" IsFloating="True" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:45" PreviousContainerId="258c4482-9171-4ddf-8d6c-b0d7142bd771" PreviousContainerIndex="1" />
         </LayoutDocumentPane>
       </LayoutDocumentPaneGroup>
     </LayoutPanel>
     <LayoutAnchorablePane Id="258c4482-9171-4ddf-8d6c-b0d7142bd771" DockWidth="0.181673021149021*" FloatingWidth="210" FloatingHeight="397" FloatingLeft="957" FloatingTop="427">
-      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Property" IsSelected="True" ContentId="Property" FloatingLeft="957" FloatingTop="427" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/11/2025 22:41:30" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="2" />
+      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Property" IsSelected="True" ContentId="Property" FloatingLeft="957" FloatingTop="427" FloatingWidth="210" FloatingHeight="397" CanClose="False" LastActivationTimeStamp="05/12/2025 19:45:41" PreviousContainerId="8e8b62e0-8ed9-4d46-ad9f-6103cccba40a" PreviousContainerIndex="2" />
     </LayoutAnchorablePane>
   </RootPanel>
   <TopSide />

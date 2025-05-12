@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C8D5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.PluginCore", "Automation.PluginCore\Automation.PluginCore.csproj", "{CC842A0B-BE55-4537-9675-C44EB50EE776}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualModule", "Plugins\VirtualModule\VirtualModule.csproj", "{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +35,20 @@ Global
 		{CC842A0B-BE55-4537-9675-C44EB50EE776}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC842A0B-BE55-4537-9675-C44EB50EE776}.Release|x64.ActiveCfg = Release|x64
 		{CC842A0B-BE55-4537-9675-C44EB50EE776}.Release|x64.Build.0 = Release|x64
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Debug|x64.ActiveCfg = Debug|x64
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Debug|x64.Build.0 = Debug|x64
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Release|x64.ActiveCfg = Release|Any CPU
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39A33D2D-D4C0-49CA-8C69-2EDB3CB2276A} = {C8D5274F-AC00-46C7-1F8D-E88E81087A52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D94A625-C125-4F6C-BBBB-B8B23E1C6C76}

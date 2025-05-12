@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Interface
 {
-    public interface IDevice
+    public interface IDevice : INode
     {
     }
 }

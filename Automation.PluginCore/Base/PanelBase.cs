@@ -1,28 +1,37 @@
 ﻿using Automation.PluginCore.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Automation.PluginCore.Util;
 using System.Windows.Input;
 
 namespace Automation.PluginCore.Base
 {
     public abstract class PanelBase : ViewModelBase, IPanel
     {
+        bool _isVisible = true;
+        INode _selectedNode;
+
         #region Command
         public ICommand CmdAppend { get; set; }
         public ICommand CmdRemove { get; set; }
         public ICommand CmdSave { get; set; }
-
         #endregion
-        bool _isVisible = true;
+
+        #region CommandMethod
+        public virtual void OnAppend(object param)
+        {
+        }
+        public virtual void OnRemove(object param)
+        {
+        }
+        public virtual void OnSave()
+        {
+        }
+        #endregion
+
         public bool IsVisible
         {
-            get => this._isVisible;
+            get => _isVisible;
             set => SetProperty(ref this._isVisible, value);
         }
-        INode _selectedNode;
         public INode SelectedNode
         {
             get => _selectedNode;

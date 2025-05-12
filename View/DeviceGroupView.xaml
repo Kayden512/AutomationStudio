@@ -15,9 +15,23 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ToolBar Grid.Row="0">
-            <Button Command="{Binding CmdAppend}">
+            <Button>
                 <Image Width="20" Height="20" Source="/Automation.PluginCore;component/Image/plus.png"/>
+                <Button.ContextMenu>
+                    <ContextMenu ItemsSource="{Binding Menu}">
+                        <ContextMenu.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding DataContext.CmdAppend, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </ContextMenu.ItemContainerStyle>
+                    </ContextMenu>
+                </Button.ContextMenu>
             </Button>
+            <!--<Button Command="{Binding CmdAppend}">
+                <Image Width="20" Height="20" Source="/Automation.PluginCore;component/Image/plus.png"/>
+            </Button>-->
             <Button Command="{Binding CmdRemove}">
                 <Image Width="20" Height="20" Source="/Automation.PluginCore;component/Image/remove.png"/>
             </Button>

@@ -65,7 +65,7 @@ namespace Automation.PluginCore.Util.Behavior
 
             var targetItem = GetItemContainerAtMouse(e.GetPosition(AssociatedObject))?.DataContext;
 
-            if (e.Data.GetData("Node") is NodeBase node && DropCommand.CanExecute(null))
+            if (e.Data.GetData("Node") is INode node && DropCommand.CanExecute(null))
             {
                 DropCommand.Execute(new DropData
                 {
@@ -85,5 +85,11 @@ namespace Automation.PluginCore.Util.Behavior
             }
             return obj as FrameworkElement;
         }
+    }
+    public class DropData
+    {
+        public INode Source { get; set; }
+        public INode Target { get; set; }
+
     }
 }

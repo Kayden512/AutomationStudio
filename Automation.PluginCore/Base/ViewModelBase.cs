@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows;
 using Automation.PluginCore.Util;
+using Automation.PluginCore.Util.Behavior;
 
 namespace Automation.PluginCore.Base
 {
@@ -28,12 +29,5 @@ namespace Automation.PluginCore.Base
                 drop.Target.AddChild(drop.Source);
             }
         }
-    }
-
-    public class DropData
-    {
-        public INode Source { get; set; }
-        public INode Target { get; set; }
-
     }
 }

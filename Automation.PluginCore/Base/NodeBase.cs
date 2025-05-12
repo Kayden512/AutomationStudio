@@ -25,6 +25,7 @@ namespace Automation.PluginCore.Base
             get => string.IsNullOrEmpty(_name) ? this.GetType().Name : _name;
             set => SetProperty(ref _name, value);
         }
+        [Browsable(false)]
         public Guid guid => Guid.Empty;
 
         [JsonIgnore]

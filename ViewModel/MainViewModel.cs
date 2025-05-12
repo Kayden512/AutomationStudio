@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -14,6 +15,8 @@ namespace AutomationStudio.ViewModel
 {
     public class MainViewModel : PanelBase
     {
+        IDocument _activeDocument;
+
         public DockingManager DockingManager { get; set; }
         public ObservableCollection<IViewModel> Documents { get; protected set; } = new ObservableCollection<IViewModel>();
         public ObservableCollection<IViewModel> Panels { get; protected set; } = new ObservableCollection<IViewModel>();
@@ -25,7 +28,6 @@ namespace AutomationStudio.ViewModel
         public LogViewModel log;
         public ErrorListViewModel errorList;
 
-        IDocument _activeDocument;
         public IDocument ActiveDocument
         {
             get => _activeDocument;
@@ -57,7 +59,9 @@ namespace AutomationStudio.ViewModel
         public MainViewModel()
         {
             CmdSave = new RelayCommand(SaveLayout);
+            PluginManager.LoadPlugins("Plugin");
             LoadPanel();
+            LoadData();
         }
         void LoadPanel()
         {
@@ -83,25 +87,22 @@ namespace AutomationStudio.ViewModel
                 }
             }
         }
-
+        void LoadData()
+        {
+            this.deviceGroup.LoadData();
+            this.deviceGroup.Menu = new ObservableCollection<Type>(PluginManager.LoadType(typeof(IDevice)));
+        }
         private void viewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SelectedNode))
-            {
                 propertyEditor.SelectedObject = (sender as IPanel).SelectedNode;
-            }
         }
-
-
         #region View
 
         void OpenDocument(IDocument document)
         {
             MapViewType(document);
-            if (this.Documents.Contains(document))
-            {
-            }
-            else
+            if(!this.Documents.Contains(document))
             {
                 this.Documents.Add(document);
             }

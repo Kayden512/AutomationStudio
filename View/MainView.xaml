@@ -20,7 +20,7 @@
             <MenuItem Header="Panels" ItemsSource="{Binding Panels}">
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">
-                        <Setter Property="Header" Value="{Binding Title}" />
+                        <Setter Property="Header" Value="{Binding Name}" />
                         <Setter Property="IsCheckable" Value="True"/>
                         <Setter Property="IsChecked" Value="{Binding IsVisible, Mode=TwoWay}"/>
                     </Style>
