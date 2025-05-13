@@ -8,8 +8,8 @@ using System.Windows.Input;
 using Automation.PluginCore.Base;
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
-using Xceed.Wpf.AvalonDock;
-using Xceed.Wpf.AvalonDock.Layout.Serialization;
+using AvalonDock.Layout.Serialization;
+using AvalonDock;
 
 namespace AutomationStudio.ViewModel
 {

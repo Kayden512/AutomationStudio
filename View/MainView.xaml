@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutomationStudio.View"
-        xmlns:dock="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:dock="https://github.com/Dirkster99/AvalonDock"
         xmlns:util="clr-namespace:AutomationStudio.Util"
         mc:Ignorable="d"
         Title="AutomationStudio" Height="450" Width="800">
@@ -34,6 +34,9 @@
                              DocumentsSource="{Binding Documents}"
                              AnchorablesSource="{Binding Panels}"
                              ActiveContent="{Binding ActiveDocument}">
+            <dock:DockingManager.Theme>
+                <dock:Vs2013DarkTheme/>
+            </dock:DockingManager.Theme>
             <dock:DockingManager.LayoutItemContainerStyleSelector>
                 <util:PaneStyleSelector>
                     <util:PaneStyleSelector.Document>

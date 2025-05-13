@@ -5,6 +5,11 @@
              xmlns:view ="clr-namespace:AutomationStudio.View"
              Startup="Application_Startup">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/AvalonDock.Themes.VS2013;component/DarkBrushs.xaml"/>
+                <ResourceDictionary Source="/Automation.PluginCore;component/Util/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
