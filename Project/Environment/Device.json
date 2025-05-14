@@ -1,8 +1,11 @@
 [
   {
-    "$type": "VirtualModule.VirtualModule, VirtualModule",
+    "$type": "Automation.PluginCore.Base.Device.PLC.TestTool, Automation.PluginCore",
     "Items": [],
-    "Name": "VirtualModule",
+    "Name": "TestTool",
+    "Double": 0.0,
+    "Int": 0,
+    "Collection": [],
     "guid": "00000000-0000-0000-0000-000000000000"
   }
 ]
