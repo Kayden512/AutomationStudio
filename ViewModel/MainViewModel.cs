@@ -10,6 +10,7 @@ using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using AvalonDock.Layout.Serialization;
 using AvalonDock;
+using Automation.PluginCore;
 
 namespace AutomationStudio.ViewModel
 {
@@ -42,10 +43,15 @@ namespace AutomationStudio.ViewModel
         }
 
         #region Command
+        public ICommand CmdEnvironment => new RelayCommand(OnEnvironment);
         public ICommand CmdHelp => new RelayCommand(OnHelp);
         public ICommand CmdCopy => new RelayCommand(OnHelp);
         public ICommand CmdPaste => new RelayCommand(OnHelp);
         #endregion
+        public void OnEnvironment()
+        {
+            this.propertyEditor.SelectedObject = Automation.PluginCore.Environment.Instance;
+        }
 
         public override void OnSave()
         {
@@ -67,7 +73,7 @@ namespace AutomationStudio.ViewModel
         }
         public void OnHelp()
         {
-            this.Clipboard = propertyEditor.SelectedObject;
+            this.Clipboard = propertyEditor.SelectedObject as INode;
         }
 
         public MainViewModel()
@@ -108,15 +114,19 @@ namespace AutomationStudio.ViewModel
         }
         private void viewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is IPanel panel)
+            if (sender is IPanel panel && panel.SelectedNode != null)
             {
                 if (e.PropertyName == nameof(SelectedNode))
                     propertyEditor.SelectedObject = panel.SelectedNode;
                 if (sender == deviceGroup)
                 {
                     action.Device = panel.SelectedNode as IDevice;
-                    if(panel.SelectedNode is IMachine)
+                    if (panel.SelectedNode is IMachine)
                         schedule.Machine = panel.SelectedNode as IMachine;
+                    else
+                        schedule.Machine = panel.SelectedNode.Parent as IMachine;
+
+
                 }
             }
             errorList.Errors.Clear();

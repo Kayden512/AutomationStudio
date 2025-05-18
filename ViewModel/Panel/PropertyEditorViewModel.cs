@@ -11,11 +11,12 @@ namespace AutomationStudio.ViewModel
 {
     public class PropertyEditorViewModel : PanelBase
     {
+        object _selectedObject;
+
         public override Type ViewType => typeof(PropertyEditorView);
         public override string Name => "Property";
 
-        INode _selectedObject;
-        public INode SelectedObject
+        public object SelectedObject
         {
             get => _selectedObject;
             set => SetProperty(ref _selectedObject, value);

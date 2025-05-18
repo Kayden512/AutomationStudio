@@ -10,9 +10,6 @@
         "Items": [
           {
             "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "Items": [],
-            "IsEnabled": true,
-            "Name": "Move Home",
             "Action": {
               "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
               "IsEnabled": true,
@@ -20,13 +17,13 @@
               "guid": "00000000-0000-0000-0000-000000000000",
               "Items": []
             },
-            "guid": "00000000-0000-0000-0000-000000000000"
+            "IsEnabled": true,
+            "Name": "Move Home",
+            "guid": "00000000-0000-0000-0000-000000000000",
+            "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "Items": [],
-            "IsEnabled": true,
-            "Name": "Move",
             "Action": {
               "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
               "IsEnabled": true,
@@ -34,7 +31,10 @@
               "guid": "00000000-0000-0000-0000-000000000000",
               "Items": []
             },
-            "guid": "00000000-0000-0000-0000-000000000000"
+            "IsEnabled": true,
+            "Name": "Move",
+            "guid": "00000000-0000-0000-0000-000000000000",
+            "Items": []
           }
         ]
       },
@@ -43,22 +43,7 @@
         "IsEnabled": true,
         "Name": "Schedule",
         "guid": "00000000-0000-0000-0000-000000000000",
-        "Items": [
-          {
-            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "Items": [],
-            "IsEnabled": true,
-            "Name": "Move Home",
-            "Action": {
-              "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
-              "IsEnabled": true,
-              "Name": "Move Home",
-              "guid": "00000000-0000-0000-0000-000000000000",
-              "Items": []
-            },
-            "guid": "00000000-0000-0000-0000-000000000000"
-          }
-        ]
+        "Items": []
       }
     ],
     "ActionMenu": [],
@@ -94,6 +79,32 @@
           }
         ],
         "Name": "Robot",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      }
+    ]
+  },
+  {
+    "$type": "Automation.PluginCore.Base.Machine.Machine, Automation.PluginCore",
+    "Schedules": [],
+    "ActionMenu": [],
+    "Actions": [],
+    "Name": "Machine2",
+    "guid": "00000000-0000-0000-0000-000000000000",
+    "Items": [
+      {
+        "$type": "Automation.PluginCore.Base.Device.PLC.VirtualDevice, Automation.PluginCore",
+        "IsReal": false,
+        "String": null,
+        "Double": 0.0,
+        "Severity": 0,
+        "Int": 0,
+        "Collection": [],
+        "ActionMenu": [
+          "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "Actions": [],
+        "Name": "VirtualDevice",
         "guid": "00000000-0000-0000-0000-000000000000",
         "Items": []
       }

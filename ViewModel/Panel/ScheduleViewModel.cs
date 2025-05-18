@@ -1,6 +1,8 @@
 ﻿using Automation.PluginCore.Base;
 using Automation.PluginCore.Base.Machine;
+using Automation.PluginCore.Base.Machine.ViewModel;
 using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
 using AutomationStudio.View;
 using System;
@@ -8,20 +10,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AutomationStudio.ViewModel
 {
     public class ScheduleViewModel : PanelBase
     {
+        IMachine _machine;
+
         public override string Name => "Schedule";
         public override Type ViewType => typeof(ScheduleView);
 
-        IMachine _machine;
+        public ICommand CmdOpenEditor => new RelayCommand(OpenEditor);
 
         public IMachine Machine
         {
             get => _machine;
             set => SetProperty(ref _machine, value);
+        }
+        public void OpenEditor()
+        {
         }
 
         public override void OnSelect(object param)
@@ -36,19 +44,13 @@ namespace AutomationStudio.ViewModel
             var obj = Activator.CreateInstance(param as Type);
             INode newNode = obj as INode;
             if (newNode is Schedule)
-            {
                 Machine.Schedules.Add(newNode);
-            }
             else
             {
                 if (this.SelectedNode is Schedule)
-                {
                     SelectedNode.AddChild(newNode);
-                }
                 else
-                {
                     SelectedNode.Parent.AddChild(newNode);
-                }
             }
         }
         public override void OnRemove(object param)
@@ -84,9 +86,6 @@ namespace AutomationStudio.ViewModel
                     targetRequest.Parent.Items.Insert(index, request);
                 }
             }
-
-               
-
         }
     }
 }

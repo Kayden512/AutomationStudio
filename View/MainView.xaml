@@ -40,7 +40,8 @@
                         </Style>
                     </MenuItem.ItemContainerStyle>
                 </MenuItem>
-                <MenuItem Header="Environment" Command="{Binding CmdSave}"/>
+                <MenuItem Header="Environment" Command="{Binding CmdEnvironment}"/>
+                <MenuItem Header="Save Layout" Command="{Binding CmdSave}"/>
                 <MenuItem Header="Help" Command="{Binding CmdHelp}"/>
             </Menu>
             <!--툴바-->

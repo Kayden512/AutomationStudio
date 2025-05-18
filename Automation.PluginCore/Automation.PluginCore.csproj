@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Access.cs" />
     <Compile Include="Base\ActionBase.cs" />
     <Compile Include="Base\Device\PLC\Action\TestAction.cs" />
     <Compile Include="Base\DeviceBase.cs" />
@@ -98,6 +99,10 @@
     <Compile Include="Base\Machine\Request.cs" />
     <Compile Include="Base\Machine\Schedule.cs" />
     <Compile Include="Base\Machine\Machine.cs" />
+    <Compile Include="Base\Machine\ViewModel\LadderViewModel.cs" />
+    <Compile Include="Base\Machine\View\LadderView.xaml.cs">
+      <DependentUpon>LadderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Base\NodeBase.cs" />
     <Compile Include="Base\NodeCollection.cs" />
     <Compile Include="Base\PanelBase.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="CustomUI\View\UITextBlockView.xaml.cs">
       <DependentUpon>UITextBlockView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Environment.cs" />
     <Compile Include="Interface\IAction.cs" />
     <Compile Include="Interface\IDevice.cs" />
     <Compile Include="Interface\IDocument.cs" />
@@ -132,7 +138,6 @@
     <Compile Include="Util\Behavior\ItemsControlDragDropBehavior.cs" />
     <Compile Include="Util\Behavior\ItemsControlClickBehavior.cs" />
     <Compile Include="Util\Converter\TypeToIconConverter.cs" />
-    <Compile Include="Util\Environment.cs" />
     <Compile Include="Util\ErrorItem.cs" />
     <Compile Include="Util\Extension.cs" />
     <Compile Include="Util\Extension.ErrorItem.cs" />
@@ -158,6 +163,10 @@
     <Resource Include="Image\plus.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Base\Machine\View\LadderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomUI\View\UITextBlockView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

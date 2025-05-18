@@ -18,10 +18,8 @@ namespace Automation.PluginCore.Base.Machine
 
         [JsonIgnore]
         [Browsable(false)]
-        public virtual List<Type> ScheduleMenu
-        {
-            get => new List<Type>() { typeof(Schedule), typeof(Request) };
-        }
+        public virtual List<Type> ScheduleMenu => new List<Type>() { typeof(Schedule), typeof(Request) };
+
         public Machine() : base()
         {
             this.Schedules.CollectionChanged += Items_CollectionChanged;

@@ -136,7 +136,6 @@ namespace Automation.PluginCore.Base
                 foreach(INode node in e.NewItems)
                 {
                     node.Parent = this;
-                    node.PropertyChanged += this.PropertyChanged;
                 }
             }
         }

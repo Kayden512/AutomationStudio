@@ -9,5 +9,11 @@ namespace Automation.PluginCore.Base
 {
     public abstract class DocumentBase : ViewModelBase, IDocument
     {
+        INode _model;
+        public INode Model
+        {
+            get => _model;
+            set => SetProperty(ref _model, value);
+        }
     }
 }

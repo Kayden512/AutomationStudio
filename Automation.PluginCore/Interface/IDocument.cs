@@ -8,5 +8,6 @@ namespace Automation.PluginCore.Interface
 {
     public interface IDocument : IViewModel
     {
+        INode Model { get; }
     }
 }
