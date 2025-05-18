@@ -10,19 +10,22 @@ namespace Automation.PluginCore.Interface
 {
     public interface INode : INotifyPropertyChanged, IDisposable
     {
-        string DisplayImage { get; }
+        string Icon { get; }
         string Name { get; }
         Guid guid { get; }
         bool IsSelected { get; }
 
         #region Tree
         string Path { get; }
+        NodeCollection Items { get; }
         INode Parent { get; set; }
-        NodeCollection Items { get; set; }
         INode FindNode(string path);
         void RemoveFromParent();
-        void AddChild(INode child);
+        void AddChild(INode node);
         #endregion
+
+        IEnumerable<IErrorItem> Validate();
+        IEnumerable<IErrorItem> CollectErrors();
 
         void Activate();
     }

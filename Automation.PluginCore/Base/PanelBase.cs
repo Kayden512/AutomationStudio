@@ -4,18 +4,22 @@ using System.Windows.Input;
 
 namespace Automation.PluginCore.Base
 {
-    public abstract class PanelBase : ViewModelBase, IPanel
+    public abstract class PanelBase : ViewModelBase, IPanel, IGroup
     {
         bool _isVisible = true;
         INode _selectedNode;
 
         #region Command
-        public ICommand CmdAppend { get; set; }
-        public ICommand CmdRemove { get; set; }
-        public ICommand CmdSave { get; set; }
+        public ICommand CmdSelect => new RelayCommand<object>(OnSelect);
+        public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
+        public ICommand CmdRemove => new RelayCommand<object>(OnRemove);
+        public ICommand CmdSave => new RelayCommand(OnSave);
         #endregion
 
         #region CommandMethod
+        public virtual void OnSelect(object param)
+        {
+        }
         public virtual void OnAppend(object param)
         {
         }

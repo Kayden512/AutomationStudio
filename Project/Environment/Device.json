@@ -1,11 +1,102 @@
 [
   {
-    "$type": "Automation.PluginCore.Base.Device.PLC.TestTool, Automation.PluginCore",
-    "Items": [],
-    "Name": "TestTool",
-    "Double": 0.0,
-    "Int": 0,
-    "Collection": [],
-    "guid": "00000000-0000-0000-0000-000000000000"
+    "$type": "Automation.PluginCore.Base.Machine.Machine, Automation.PluginCore",
+    "Schedules": [
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "Schedule",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "Items": [],
+            "IsEnabled": true,
+            "Name": "Move Home",
+            "Action": {
+              "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
+              "IsEnabled": true,
+              "Name": "Move Home",
+              "guid": "00000000-0000-0000-0000-000000000000",
+              "Items": []
+            },
+            "guid": "00000000-0000-0000-0000-000000000000"
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "Items": [],
+            "IsEnabled": true,
+            "Name": "Move",
+            "Action": {
+              "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
+              "IsEnabled": true,
+              "Name": "Move",
+              "guid": "00000000-0000-0000-0000-000000000000",
+              "Items": []
+            },
+            "guid": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "Schedule",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "Items": [],
+            "IsEnabled": true,
+            "Name": "Move Home",
+            "Action": {
+              "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
+              "IsEnabled": true,
+              "Name": "Move Home",
+              "guid": "00000000-0000-0000-0000-000000000000",
+              "Items": []
+            },
+            "guid": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      }
+    ],
+    "ActionMenu": [],
+    "Actions": [],
+    "Name": "Machine",
+    "guid": "00000000-0000-0000-0000-000000000000",
+    "Items": [
+      {
+        "$type": "Automation.PluginCore.Base.Device.PLC.VirtualDevice, Automation.PluginCore",
+        "IsReal": true,
+        "String": null,
+        "Double": 1.0,
+        "Severity": 0,
+        "Int": 0,
+        "Collection": [],
+        "ActionMenu": [
+          "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "Actions": [
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
+            "IsEnabled": true,
+            "Name": "Move",
+            "guid": "00000000-0000-0000-0000-000000000000",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
+            "IsEnabled": true,
+            "Name": "Move Home",
+            "guid": "00000000-0000-0000-0000-000000000000",
+            "Items": []
+          }
+        ],
+        "Name": "Robot",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      }
+    ]
   }
 ]

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Util
 {
-    public static class Extension
+    public static partial class Extension
     {
         private static readonly JsonSerializerSettings _settings = new JsonSerializerSettings
         {

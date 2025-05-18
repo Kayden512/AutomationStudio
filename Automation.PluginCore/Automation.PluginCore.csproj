@@ -56,6 +56,7 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\AutomationStudio\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -89,9 +90,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Device\DeviceBase.cs" />
-    <Compile Include="Base\Device\PLC\TestTool.cs" />
+    <Compile Include="Base\ActionBase.cs" />
+    <Compile Include="Base\Device\PLC\Action\TestAction.cs" />
+    <Compile Include="Base\DeviceBase.cs" />
+    <Compile Include="Base\Device\PLC\VirtualDevice.cs" />
     <Compile Include="Base\DocumentBase.cs" />
+    <Compile Include="Base\Machine\Request.cs" />
+    <Compile Include="Base\Machine\Schedule.cs" />
+    <Compile Include="Base\Machine\Machine.cs" />
     <Compile Include="Base\NodeBase.cs" />
     <Compile Include="Base\NodeCollection.cs" />
     <Compile Include="Base\PanelBase.cs" />
@@ -101,8 +107,12 @@
     <Compile Include="CustomUI\View\UITextBlockView.xaml.cs">
       <DependentUpon>UITextBlockView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IAction.cs" />
     <Compile Include="Interface\IDevice.cs" />
     <Compile Include="Interface\IDocument.cs" />
+    <Compile Include="Interface\IErrorItem.cs" />
+    <Compile Include="Interface\IGroup.cs" />
+    <Compile Include="Interface\IMachine.cs" />
     <Compile Include="Interface\INode.cs" />
     <Compile Include="Interface\IPanel.cs" />
     <Compile Include="Interface\IViewModel.cs" />
@@ -120,8 +130,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Util\Behavior\ItemsControlDragDropBehavior.cs" />
+    <Compile Include="Util\Behavior\ItemsControlClickBehavior.cs" />
+    <Compile Include="Util\Converter\TypeToIconConverter.cs" />
     <Compile Include="Util\Environment.cs" />
+    <Compile Include="Util\ErrorItem.cs" />
     <Compile Include="Util\Extension.cs" />
+    <Compile Include="Util\Extension.ErrorItem.cs" />
     <Compile Include="Util\PluginManager.cs" />
     <Compile Include="Util\RelayCommand.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -197,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Base\Machine\Action\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

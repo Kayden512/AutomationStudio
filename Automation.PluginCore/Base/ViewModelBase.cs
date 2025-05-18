@@ -24,8 +24,12 @@ namespace Automation.PluginCore.Base
             if (drop.Source != null && drop.Target != null && drop.Source != drop.Target)
             {
                 if (drop.Source is IViewModel) return;
-                // 예: 순서를 바꾸거나 부모-자식 관계를 재정의
+
                 if (drop.Source.Items.Contains(drop.Target)) return;
+                
+                //Group이 아니면 Return
+                if ((drop.Target is IGroup) == false) return;
+
                 drop.Target.AddChild(drop.Source);
             }
         }

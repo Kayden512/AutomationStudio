@@ -20,14 +20,14 @@ namespace AutomationStudio.ViewModel
         public override Type ViewType => typeof(CustomScreenEditorView);
         public override string Name => "UI Editor";
 
-        void OnAppend(object param)
+        public override void OnAppend(object param)
         {
             UITextBlock block = new UITextBlock();
             MapViewType(block);
             this.Items.Add(block);
 
         }
-        void OnRemove(object param)
+        public override void OnRemove(object param)
         {
             if (this.SelectedNode == null) return;
             if (this.Items.Contains(this.SelectedNode))
@@ -53,11 +53,6 @@ namespace AutomationStudio.ViewModel
             var key = new DataTemplateKey(viewModel.GetType());
             if (Application.Current.Resources.Contains(key)) return;
             Application.Current.Resources.Add(key, template);
-        }
-        public CustomScreenEditorViewModel()
-        {
-            this.CmdAppend = new RelayCommand<object>(OnAppend);
-            this.CmdRemove = new RelayCommand<object>(OnRemove);
         }
     }
 }

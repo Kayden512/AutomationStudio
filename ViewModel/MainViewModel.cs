@@ -15,29 +15,39 @@ namespace AutomationStudio.ViewModel
 {
     public class MainViewModel : PanelBase
     {
-        IDocument _activeDocument;
+        IViewModel _activeContent;
+        INode _clipboard;
 
         public DockingManager DockingManager { get; set; }
         public ObservableCollection<IViewModel> Documents { get; protected set; } = new ObservableCollection<IViewModel>();
         public ObservableCollection<IViewModel> Panels { get; protected set; } = new ObservableCollection<IViewModel>();
 
-        public CustomScreenEditorViewModel CustomScreenEditor;
         public DeviceGroupViewModel deviceGroup;
         public ActionViewModel action;
+        public ScheduleViewModel schedule;
+        public CustomScreenEditorViewModel CustomScreenEditor;
         public PropertyEditorViewModel propertyEditor;
         public LogViewModel log;
         public ErrorListViewModel errorList;
 
-        public IDocument ActiveDocument
+        public IViewModel ActiveContent
         {
-            get => _activeDocument;
-            set => SetProperty(ref _activeDocument, value);
+            get => _activeContent;
+            set => SetProperty(ref _activeContent, value);
+        }
+        public INode Clipboard
+        {
+            get => _clipboard;
+            set => SetProperty(ref _clipboard, value);
         }
 
         #region Command
+        public ICommand CmdHelp => new RelayCommand(OnHelp);
+        public ICommand CmdCopy => new RelayCommand(OnHelp);
+        public ICommand CmdPaste => new RelayCommand(OnHelp);
         #endregion
 
-        public void SaveLayout()
+        public override void OnSave()
         {
             if (DockingManager == null) return;
              
@@ -55,10 +65,13 @@ namespace AutomationStudio.ViewModel
             };
             serializer.Deserialize("Layout.xml");
         }
+        public void OnHelp()
+        {
+            this.Clipboard = propertyEditor.SelectedObject;
+        }
 
         public MainViewModel()
         {
-            CmdSave = new RelayCommand(SaveLayout);
             PluginManager.LoadPlugins("Plugin");
             LoadPanel();
             LoadData();
@@ -68,10 +81,11 @@ namespace AutomationStudio.ViewModel
             CustomScreenEditor = new CustomScreenEditorViewModel();
             deviceGroup = new DeviceGroupViewModel();
             action = new ActionViewModel();
+            schedule = new ScheduleViewModel();
             propertyEditor = new PropertyEditorViewModel();
             log = new LogViewModel();
             errorList = new ErrorListViewModel();
-            Panels = new ObservableCollection<IViewModel>() {  deviceGroup, propertyEditor, action , CustomScreenEditor, log, errorList };
+            Panels = new ObservableCollection<IViewModel>() {  deviceGroup, schedule, propertyEditor, action , CustomScreenEditor, log, errorList };
             foreach (INode node in Panels)
             {
                 node.PropertyChanged += viewModelPropertyChanged;
@@ -94,8 +108,22 @@ namespace AutomationStudio.ViewModel
         }
         private void viewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(SelectedNode))
-                propertyEditor.SelectedObject = (sender as IPanel).SelectedNode;
+            if (sender is IPanel panel)
+            {
+                if (e.PropertyName == nameof(SelectedNode))
+                    propertyEditor.SelectedObject = panel.SelectedNode;
+                if (sender == deviceGroup)
+                {
+                    action.Device = panel.SelectedNode as IDevice;
+                    if(panel.SelectedNode is IMachine)
+                        schedule.Machine = panel.SelectedNode as IMachine;
+                }
+            }
+            errorList.Errors.Clear();
+            foreach (var err in deviceGroup.CollectErrors())
+            {
+                errorList.Errors.Add((ErrorItem)err);
+            }
         }
         #region View
 
@@ -106,8 +134,9 @@ namespace AutomationStudio.ViewModel
             {
                 this.Documents.Add(document);
             }
-            this.ActiveDocument = document;
+            this.ActiveContent = document;
         }
+
         /// <summary>
         /// ViewModel에 대한 View를 등록
         /// </summary>

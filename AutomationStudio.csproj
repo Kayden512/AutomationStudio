@@ -105,43 +105,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ActionViewModel.cs" />
-    <Compile Include="ViewModel\CustomScreenEditorViewModel.cs" />
-    <Compile Include="ViewModel\ErrorListViewModel.cs" />
-    <Compile Include="ViewModel\LogViewModel.cs" />
-    <Compile Include="ViewModel\PropertyEditorViewModel.cs" />
-    <Compile Include="View\ActionView.xaml.cs">
+    <Compile Include="ViewModel\Panel\ActionViewModel.cs" />
+    <Compile Include="ViewModel\Panel\CustomScreenEditorViewModel.cs" />
+    <Compile Include="ViewModel\Panel\ErrorListViewModel.cs" />
+    <Compile Include="ViewModel\Panel\LogViewModel.cs" />
+    <Compile Include="ViewModel\Panel\PropertyEditorViewModel.cs" />
+    <Compile Include="ViewModel\Panel\ScheduleViewModel.cs" />
+    <Compile Include="View\Panel\ActionView.xaml.cs">
       <DependentUpon>ActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CustomScreenEditorView.xaml.cs">
+    <Compile Include="View\Panel\CustomScreenEditorView.xaml.cs">
       <DependentUpon>CustomScreenEditorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ErrorListView.xaml.cs">
+    <Compile Include="View\Panel\ErrorListView.xaml.cs">
       <DependentUpon>ErrorListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LogView.xaml.cs">
+    <Compile Include="View\Panel\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PropertyEditorView.xaml.cs">
+    <Compile Include="View\Panel\PropertyEditorView.xaml.cs">
       <DependentUpon>PropertyEditorView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\ActionView.xaml">
+    <Compile Include="View\Panel\ScheduleView.xaml.cs">
+      <DependentUpon>ScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\Panel\ActionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CustomScreenEditorView.xaml">
+    <Page Include="View\Panel\CustomScreenEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DeviceGroupView.xaml">
+    <Page Include="View\Panel\DeviceGroupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ErrorListView.xaml">
+    <Page Include="View\Panel\ErrorListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LogView.xaml">
+    <Page Include="View\Panel\LogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,16 +159,20 @@
     </Compile>
     <Compile Include="Util\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\PaneStyleSelector.cs" />
-    <Compile Include="ViewModel\DeviceGroupViewModel.cs" />
+    <Compile Include="ViewModel\Panel\DeviceGroupViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\DeviceGroupView.xaml.cs">
+    <Compile Include="View\Panel\DeviceGroupView.xaml.cs">
       <DependentUpon>DeviceGroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\PropertyEditorView.xaml">
+    <Page Include="View\Panel\PropertyEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\ScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

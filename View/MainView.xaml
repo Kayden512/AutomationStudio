@@ -8,32 +8,53 @@
         xmlns:util="clr-namespace:AutomationStudio.Util"
         mc:Ignorable="d"
         Title="AutomationStudio" Height="450" Width="800">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CmdCopy}"
+                    Modifiers="Control"
+                    Key="C" />
+        <KeyBinding Command="{Binding CmdPaste}"
+                    Modifiers="Control"
+                    Key="V" />
+    </Window.InputBindings>
     <Window.Resources>
         <util:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="Panels" ItemsSource="{Binding Panels}">
-                <MenuItem.ItemContainerStyle>
-                    <Style TargetType="MenuItem">
-                        <Setter Property="Header" Value="{Binding Name}" />
-                        <Setter Property="IsCheckable" Value="True"/>
-                        <Setter Property="IsChecked" Value="{Binding IsVisible, Mode=TwoWay}"/>
-                    </Style>
-                </MenuItem.ItemContainerStyle>
-            </MenuItem>
-            <MenuItem Header="Environment" Command="{Binding CmdSave}"/>
-            <MenuItem Header="Help"/>
-        </Menu>
+        <Grid Grid.Row="0" Background="{StaticResource ControlBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+            </Grid.RowDefinitions>
+            <!--최상단 메뉴 바-->
+            <Menu Grid.Row="0" VerticalAlignment="Center">
+                <MenuItem Header="Panels" ItemsSource="{Binding Panels}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Name}" />
+                            <Setter Property="IsCheckable" Value="True"/>
+                            <Setter Property="IsChecked" Value="{Binding IsVisible, Mode=TwoWay}"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="Environment" Command="{Binding CmdSave}"/>
+                <MenuItem Header="Help" Command="{Binding CmdHelp}"/>
+            </Menu>
+            <!--툴바-->
+            <StackPanel Grid.Row="1" 
+                        Margin="10,0,0,0">
+                <TextBlock Text="{Binding Clipboard.Name}" Foreground="{StaticResource TextLabelBrush}"/>
+            </StackPanel>
+        </Grid>
+        
         <dock:DockingManager x:Name="DockManager"
                              Grid.Row="1"
                              DocumentsSource="{Binding Documents}"
                              AnchorablesSource="{Binding Panels}"
-                             ActiveContent="{Binding ActiveDocument}">
+                             ActiveContent="{Binding ActiveContent, Mode=TwoWay}">
             <dock:DockingManager.Theme>
                 <dock:Vs2013DarkTheme/>
             </dock:DockingManager.Theme>
