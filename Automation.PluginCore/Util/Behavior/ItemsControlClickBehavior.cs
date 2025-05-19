@@ -25,12 +25,14 @@ namespace Automation.PluginCore.Util.Behavior
         protected override void OnAttached()
         {
             base.OnAttached();
-            AssociatedObject.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
+            //AssociatedObject.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
+            AssociatedObject.MouseLeftButtonUp += OnPreviewMouseLeftButtonDown;
         }
 
         protected override void OnDetaching()
         {
-            AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
+            //AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
+            AssociatedObject.MouseLeftButtonUp -= OnPreviewMouseLeftButtonDown;
             base.OnDetaching();
         }
 

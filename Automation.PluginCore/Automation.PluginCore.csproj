@@ -119,6 +119,7 @@
     <Compile Include="Interface\IErrorItem.cs" />
     <Compile Include="Interface\IGroup.cs" />
     <Compile Include="Interface\IMachine.cs" />
+    <Compile Include="Interface\IMain.cs" />
     <Compile Include="Interface\INode.cs" />
     <Compile Include="Interface\IPanel.cs" />
     <Compile Include="Interface\IViewModel.cs" />
@@ -137,6 +138,7 @@
     </Compile>
     <Compile Include="Util\Behavior\ItemsControlDragDropBehavior.cs" />
     <Compile Include="Util\Behavior\ItemsControlClickBehavior.cs" />
+    <Compile Include="Util\Converter\MultiplyConverter.cs" />
     <Compile Include="Util\Converter\TypeToIconConverter.cs" />
     <Compile Include="Util\ErrorItem.cs" />
     <Compile Include="Util\Extension.cs" />

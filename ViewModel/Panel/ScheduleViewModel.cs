@@ -1,4 +1,5 @@
-﻿using Automation.PluginCore.Base;
+﻿using Automation.PluginCore;
+using Automation.PluginCore.Base;
 using Automation.PluginCore.Base.Machine;
 using Automation.PluginCore.Base.Machine.ViewModel;
 using Automation.PluginCore.Interface;
@@ -20,6 +21,8 @@ namespace AutomationStudio.ViewModel
 
         public override string Name => "Schedule";
         public override Type ViewType => typeof(ScheduleView);
+        LadderViewModel LogicEditor = new LadderViewModel();
+
 
         public ICommand CmdOpenEditor => new RelayCommand(OpenEditor);
 
@@ -30,6 +33,8 @@ namespace AutomationStudio.ViewModel
         }
         public void OpenEditor()
         {
+            LogicEditor.Model = this;
+            Access.Instance.OpenDocument(LogicEditor);
         }
 
         public override void OnSelect(object param)

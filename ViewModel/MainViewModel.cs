@@ -14,7 +14,7 @@ using Automation.PluginCore;
 
 namespace AutomationStudio.ViewModel
 {
-    public class MainViewModel : PanelBase
+    public class MainViewModel : PanelBase, IMain
     {
         IViewModel _activeContent;
         INode _clipboard;
@@ -56,7 +56,6 @@ namespace AutomationStudio.ViewModel
         public override void OnSave()
         {
             if (DockingManager == null) return;
-             
             var serializer = new XmlLayoutSerializer(DockingManager);
             serializer.Serialize("Layout.xml");
         }
@@ -78,6 +77,7 @@ namespace AutomationStudio.ViewModel
 
         public MainViewModel()
         {
+            Access.Instance.Main = this;
             PluginManager.LoadPlugins("Plugin");
             LoadPanel();
             LoadData();
@@ -123,10 +123,8 @@ namespace AutomationStudio.ViewModel
                     action.Device = panel.SelectedNode as IDevice;
                     if (panel.SelectedNode is IMachine)
                         schedule.Machine = panel.SelectedNode as IMachine;
-                    else
+                    else if(panel.SelectedNode.Parent is IMachine)
                         schedule.Machine = panel.SelectedNode.Parent as IMachine;
-
-
                 }
             }
             errorList.Errors.Clear();
@@ -137,7 +135,7 @@ namespace AutomationStudio.ViewModel
         }
         #region View
 
-        void OpenDocument(IDocument document)
+        public void OpenDocument(IDocument document)
         {
             MapViewType(document);
             if(!this.Documents.Contains(document))
@@ -145,6 +143,13 @@ namespace AutomationStudio.ViewModel
                 this.Documents.Add(document);
             }
             this.ActiveContent = document;
+        }
+        public void CloseDocument(IDocument document)
+        {
+            if (this.Documents.Contains(document))
+            {
+                this.Documents.Remove(document);
+            }
         }
 
         /// <summary>

@@ -90,6 +90,12 @@
         <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
         <Setter Property="BorderThickness" Value="0,1,0,0" />
     </Style>
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+    </Style>
     <Style TargetType="TextBlock">
         <Setter Property="Background" Value="Transparent" />
     </Style>
@@ -100,7 +106,6 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Fill" Value="{StaticResource TextBrush}"/>
-
     </Style>
     <Style TargetType="CheckBox">
         <Setter Property="Template">
@@ -262,6 +267,10 @@
     <x:Static x:Key="EmptyString"
             Member="sys:String.Empty" />
 
+    <Style TargetType="pg:CollectionControlDialog">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+    </Style>
+    
     <!-- PropertyGrid numeric Editors -->
     <Style x:Key="PropertyGridNumericUpDown"
          TargetType="{x:Type prim:InputBase}"

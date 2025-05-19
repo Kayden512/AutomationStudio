@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Automation.PluginCore.Base.Machine.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace Automation.PluginCore.Base.Machine.View
         public LadderView()
         {
             InitializeComponent();
+        }
+        private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var canvas = sender as Canvas;
+            var point = e.GetPosition(canvas);
+
+            if (DataContext is LadderViewModel vm)
+            {
+                vm.SelectCell(point);
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Automation.PluginCore.Base
 {
@@ -14,6 +16,12 @@ namespace Automation.PluginCore.Base
         {
             get => _model;
             set => SetProperty(ref _model, value);
+        }
+        public ICommand CmdClose => new RelayCommand(OnClose);
+
+        public void OnClose()
+        {
+            Access.Instance.CloseDocument(this);
         }
     }
 }

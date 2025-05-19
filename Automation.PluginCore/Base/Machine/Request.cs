@@ -27,5 +27,6 @@ namespace Automation.PluginCore.Base.Machine
             get => _action;
             set => SetProperty(ref _action, value);
         }
+        public string TypeName => Action.GetType().Name;
     }
 }
