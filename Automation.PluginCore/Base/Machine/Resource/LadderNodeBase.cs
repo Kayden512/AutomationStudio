@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Automation.PluginCore.Base.Machine.Resource
         int _y;
         LadderType _ladderType = LadderType.None;
         bool _verticalLine;
+        bool _value;
 
         public override string Icon => "M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10";
 
@@ -40,6 +42,10 @@ namespace Automation.PluginCore.Base.Machine.Resource
         }
         public bool Monitor { get; set; }
 
-        public bool Value { get; set; }
+        public bool Value
+        {
+            get => _value;
+            set => SetProperty(ref _value, value);
+        }
     }
 }

@@ -33,7 +33,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Height="48">
             <StackPanel Orientation="Horizontal">
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="empty">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="36" Height="24"
@@ -44,7 +44,7 @@
                         </StackPanel>
                     </Grid>
                 </Button>
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="contact_a">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="48" Height="24"
@@ -55,7 +55,7 @@
                         </StackPanel>
                     </Grid>
                 </Button>
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="contact_b">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="48" Height="24"
@@ -66,7 +66,7 @@
                         </StackPanel>
                     </Grid>
                 </Button>
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="line">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="36" Height="24"
@@ -77,7 +77,7 @@
                         </StackPanel>
                     </Grid>
                 </Button>
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="down">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="36" Height="24"
@@ -88,7 +88,7 @@
                         </StackPanel>
                     </Grid>
                 </Button>
-                <Button Width="56" Margin="5,0,0,0">
+                <Button Width="56" Margin="5,0,0,0" Command="{Binding CmdAppend}" CommandParameter="coil">
                     <Grid Margin="3">
                         <StackPanel>
                             <Path Width="48" Height="24"
