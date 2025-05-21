@@ -34,7 +34,15 @@ namespace AutomationStudio.ViewModel
         public IViewModel ActiveContent
         {
             get => _activeContent;
-            set => SetProperty(ref _activeContent, value);
+            set
+            {
+                if(_activeContent != null)
+                    _activeContent.IsFocused = false;
+                SetProperty(ref _activeContent, value);
+                if (_activeContent != null)
+                    _activeContent.IsFocused = true;
+            }
+                    
         }
         public INode Clipboard
         {
@@ -114,7 +122,8 @@ namespace AutomationStudio.ViewModel
         }
         private void viewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is IPanel panel && panel.SelectedNode != null)
+            //if (sender is IPanel panel && panel.SelectedNode != null)
+            if (sender is IViewModel panel && panel.SelectedNode != null)
             {
                 if (e.PropertyName == nameof(SelectedNode))
                     propertyEditor.SelectedObject = panel.SelectedNode;
@@ -141,6 +150,7 @@ namespace AutomationStudio.ViewModel
             if(!this.Documents.Contains(document))
             {
                 this.Documents.Add(document);
+                document.PropertyChanged += viewModelPropertyChanged;
             }
             this.ActiveContent = document;
         }
@@ -148,6 +158,7 @@ namespace AutomationStudio.ViewModel
         {
             if (this.Documents.Contains(document))
             {
+                document.PropertyChanged -= viewModelPropertyChanged;
                 this.Documents.Remove(document);
             }
         }

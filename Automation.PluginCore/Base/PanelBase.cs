@@ -7,7 +7,6 @@ namespace Automation.PluginCore.Base
     public abstract class PanelBase : ViewModelBase, IPanel, IGroup
     {
         bool _isVisible = true;
-        INode _selectedNode;
 
         #region Command
         public ICommand CmdSelect => new RelayCommand<object>(OnSelect);
@@ -35,11 +34,6 @@ namespace Automation.PluginCore.Base
         {
             get => _isVisible;
             set => SetProperty(ref this._isVisible, value);
-        }
-        public INode SelectedNode
-        {
-            get => _selectedNode;
-            set => SetProperty(ref _selectedNode, value);
         }
     }
 }

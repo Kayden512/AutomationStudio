@@ -9,6 +9,5 @@ namespace Automation.PluginCore.Interface
     public interface IPanel : IViewModel
     {
         bool IsVisible { get; set; }
-        INode SelectedNode { get; set; }
     }
 }

@@ -5,8 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Automation.PluginCore.Base.Machine.View"
              xmlns:converter="clr-namespace:Automation.PluginCore.Util.Converter"
+             xmlns:util="clr-namespace:Automation.PluginCore.Util"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" 
+             d:DesignWidth="800"
+             util:FocusExtension.IsFocused="{Binding IsFocused}" Focusable="True">
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding CmdMove}" CommandParameter ="left" Key="Left"/>
+        <KeyBinding Command="{Binding CmdMove}" CommandParameter ="right" Key="Right"/>
+        <KeyBinding Command="{Binding CmdMove}" CommandParameter ="up" Key="Up"/>
+        <KeyBinding Command="{Binding CmdMove}" CommandParameter ="down" Key="Down"/>
+
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="empty" Key="Space"/>
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="contact_a" Key="F3"/>
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="contact_b" Key="F4"/>
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="line" Key="F5"/>
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="down" Key="F6"/>
+        <KeyBinding Command="{Binding CmdAppend}" CommandParameter ="coil" Key="F7"/>
+    </UserControl.InputBindings>
     <UserControl.Resources>
         <converter:MultiplyConverter x:Key="MultiplyConverter"/>
     </UserControl.Resources>
@@ -129,7 +145,76 @@
                    Stroke="Blue" StrokeThickness="2"
                    StrokeDashArray="4"
                    Canvas.Left="{Binding SelectedX, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}"
-                   Canvas.Top="{Binding SelectedY, Converter={StaticResource MultiplyConverter}, ConverterParameter=40}" Fill="#190033FF" />
+                   Canvas.Top="{Binding SelectedY, Converter={StaticResource MultiplyConverter}, ConverterParameter=40}" Fill="#190033FF"/>
+                <ItemsControl ItemsSource="{Binding Items}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left" Value="{Binding X, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}" />
+                            <Setter Property="Canvas.Top" Value="{Binding Y, Converter={StaticResource MultiplyConverter}, ConverterParameter=40}" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="60" Height="50">
+                                <Path Fill="Green" Data="M 25,5 V 15 H 35 V 5">
+                                    <Path.Style>
+                                        <Style TargetType="Path">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Value}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                                <Path Stroke="{StaticResource TextBrush}" StrokeThickness="2">
+                                    <Path.Style>
+                                        <Style TargetType="Path">
+                                            
+                                            <Setter Property="Data" Value=""/>
+                                            
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Type}" Value="Contact_A">
+                                                    <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Type}" Value="Contact_B">
+                                                    <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10 M 17,2 L 43,18"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Type}" Value="HorizontalLine">
+                                                    <Setter Property="Data" Value="M 0,10 L 60,10"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Type}" Value="Coil">
+                                                    <Setter Property="Data" Value="M 0,10 L 20,10 
+                                                                                    M 25,0 C 20,0 20,20 25,20 
+                                                                                    M 35,20 C 40,20 40,0 35,0 
+                                                                                    M 40,10 L 60,10"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                                <Path Stroke="{StaticResource TextBrush}" Data="M 0,10 L 0,50" StrokeThickness="2">
+                                    <Path.Style>
+                                        <Style TargetType="Path">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding VerticalLine}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Canvas>
         </Grid>
     </Grid>

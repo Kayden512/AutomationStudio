@@ -15,7 +15,21 @@ namespace Automation.PluginCore.Base
 {
     public abstract class ViewModelBase : NodeBase, IViewModel
     {
+        bool _isFocused;
+        INode _selectedNode;
         public virtual Type ViewType => null;
+
+        public bool IsFocused
+        {
+            get => _isFocused;
+            set => SetProperty(ref _isFocused, value);
+        }
+
+        public INode SelectedNode
+        {
+            get => _selectedNode;
+            set => SetProperty(ref _selectedNode, value);
+        }
 
         public ICommand CmdDrop => new RelayCommand<DropData>(OnDrop);
 

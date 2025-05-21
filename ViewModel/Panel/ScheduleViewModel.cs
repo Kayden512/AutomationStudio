@@ -33,7 +33,7 @@ namespace AutomationStudio.ViewModel
         }
         public void OpenEditor()
         {
-            LogicEditor.Model = this;
+            LogicEditor.Model = Machine;
             Access.Instance.OpenDocument(LogicEditor);
         }
 

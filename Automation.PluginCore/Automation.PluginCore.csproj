@@ -97,6 +97,8 @@
     <Compile Include="Base\Device\PLC\VirtualDevice.cs" />
     <Compile Include="Base\DocumentBase.cs" />
     <Compile Include="Base\Machine\Request.cs" />
+    <Compile Include="Base\Machine\Resource\ILadder.cs" />
+    <Compile Include="Base\Machine\Resource\LadderNodeBase.cs" />
     <Compile Include="Base\Machine\Schedule.cs" />
     <Compile Include="Base\Machine\Machine.cs" />
     <Compile Include="Base\Machine\ViewModel\LadderViewModel.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Util\ErrorItem.cs" />
     <Compile Include="Util\Extension.cs" />
     <Compile Include="Util\Extension.ErrorItem.cs" />
+    <Compile Include="Util\FocusExtension.cs" />
     <Compile Include="Util\PluginManager.cs" />
     <Compile Include="Util\RelayCommand.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
