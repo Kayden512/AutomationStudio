@@ -2,24 +2,42 @@
 using Automation.PluginCore.Base.Machine.View;
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 namespace Automation.PluginCore.Base.Machine.ViewModel
 {
     public class LadderViewModel : DocumentBase
     {
+        const int MaxRows = 8;
+        const int MaxColumns = 8;
+
         int _selectedX;
         int _selectedY;
+        bool _isRunning;
+
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
+        CancellationTokenSource _cts;
 
 
         public override Type ViewType => typeof(LadderView);
 
+        public ICommand CmdTest => new RelayCommand(OnTest);
         public ICommand CmdMove => new RelayCommand<object>(OnMove);
         public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
 
@@ -57,6 +75,50 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             SelectedX = (int)(clickPoint.X / 60);
             SelectedY = (int)(clickPoint.Y / 40);
         }
+        public async void OnTest()
+        {
+            if (!IsRunning)
+            {
+                IsRunning = true;
+
+                List<LadderNode> toRemove = new List<LadderNode>();
+
+                foreach (LadderNode node in this.Items)
+                {
+                    if (node.Type == LadderType.None && node.VerticalLine == false)
+                        toRemove.Add(node);
+                }
+                // 이후에 제거
+                foreach (LadderNode node in toRemove)
+                {
+                    node.RemoveFromParent(); // 내부에서 this.Items.Remove(node) 같은 코드일 것
+                }
+
+                _cts = new CancellationTokenSource();
+                CancellationToken token = _cts.Token;
+
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                        while (!token.IsCancellationRequested)
+                        {
+                            Compute();
+                            await Task.Delay(100, token);
+                        }
+                    }
+                    catch (TaskCanceledException)
+                    {
+                        //무시
+                    }
+                }, token);
+            }
+            else
+            {
+                _cts.Cancel();
+                IsRunning = false;
+            }
+        }
 
         public void OnMove(object param)
         {
@@ -67,7 +129,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                         SelectedX--;
                     break;
                 case "right":
-                    if (SelectedX < 16)
+                    if (SelectedX < MaxColumns - 1)
                         SelectedX++;
                     break;
                 case "up":
@@ -75,7 +137,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                         SelectedY--;
                     break;
                 case "down":
-                    if (SelectedY < 16)
+                    if (SelectedY < MaxRows - 1)
                         SelectedY++;
                     break;
             }
@@ -116,6 +178,68 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             node = this.Items.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
             if (node != null)
                 SelectedNode = node;
+        }
+        
+        public LadderNode GetNode(int row, int column)
+        {
+            INode node = Items.ToList().Find(x => (x as LadderNode).X == column && (x as LadderNode).Y == row);
+
+            if(node != null) 
+                return node as LadderNode;
+
+            return null;
+        }
+
+        public void ComputeRow(int row, int startColumn, bool flow)
+        {
+            if (row < 0 || row >= MaxRows) return;
+            bool currentFlow = flow;
+            for (int column = startColumn; column < MaxColumns; column++)
+            {
+                var node = GetNode(row, column);
+                if (node == null) return;//끊어지면 return;
+                if (startColumn != 0 && column == startColumn)//재귀적으로 들어왔고 처음일때 flow를 받아와서 node와 or 연산
+                {
+                    currentFlow = node.Flow || flow;
+                }
+                node.Flow = currentFlow;
+                if (node.VerticalLine && column == startColumn)
+                {
+                    var upperNode = GetNode(row - 1, column);
+                    if (upperNode != null && upperNode.VerticalLine == true)
+                    {
+                        ComputeRow(row - 1, column, currentFlow);
+                    }
+                }
+                switch (node.Type)
+                {
+                    case LadderType.Contact_A:
+                        currentFlow = currentFlow && node.Value;  // Normally Open
+                        break;
+                    case LadderType.Contact_B:
+                        currentFlow = currentFlow && !node.Value; // Normally Closed
+                        break;
+                    case LadderType.Coil:
+                        node.Value = currentFlow; // 결과 저장
+                        break;
+                }
+                var connectedNode = GetNode(row - 1, column + 1);
+                if(connectedNode != null && connectedNode.VerticalLine == true)
+                {
+                    ComputeRow(row -1, column + 1, currentFlow);
+                }
+            }
+        }
+        public void Compute()
+        {
+            foreach(LadderNode node in this.Items)
+            {
+                node.Flow = false;
+            }
+            for (int row = 0; row < MaxRows; row++)
+            {
+                ComputeRow(row, 0, true);
+            }
         }
     }
 }

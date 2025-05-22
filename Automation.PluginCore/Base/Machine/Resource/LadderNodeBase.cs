@@ -16,8 +16,9 @@ namespace Automation.PluginCore.Base.Machine.Resource
         LadderType _ladderType = LadderType.None;
         bool _verticalLine;
         bool _value;
+        bool _flow;
 
-        public override string Icon => "M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10";
+        public override string Icon => "M14 1V3H10V1H8V22H10V20H14V22H16V1H14M14 5V8H10V5H14M14 10V13H10V10H14M10 18V15H14V18H10Z";
 
         public int X
         {
@@ -40,7 +41,11 @@ namespace Automation.PluginCore.Base.Machine.Resource
             get => _verticalLine;
             set => SetProperty(ref _verticalLine, value);
         }
-        public bool Monitor { get; set; }
+        public bool Flow
+        {
+            get => _flow;
+            set => SetProperty(ref _flow, value);
+        }
 
         public bool Value
         {
