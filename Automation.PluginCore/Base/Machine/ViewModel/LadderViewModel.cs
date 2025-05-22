@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -197,13 +198,31 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             for (int column = startColumn; column < MaxColumns; column++)
             {
                 var node = GetNode(row, column);
-                if (node == null) return;//끊어지면 return;
-                if (startColumn != 0 && column == startColumn)//재귀적으로 들어왔고 처음일때 flow를 받아와서 node와 or 연산
+                if (node == null)
+                {
+                    currentFlow = false;
+                    continue;
+                }
+                if (node.Type == LadderType.None && node.VerticalLine == false) return;
+
+                if (startColumn != 0 && column == startColumn)
                 {
                     currentFlow = node.Flow || flow;
                 }
+                else if(column != 0)
+                {
+                    var backNode = GetNode(row, column - 1);
+                    if (backNode == null)
+                    {
+                        var upperNode = GetNode(row - 1, column);
+                        if (upperNode != null && upperNode.VerticalLine == true)
+                        {
+                            currentFlow = upperNode.Flow;
+                        }
+                    }
+                }
                 node.Flow = currentFlow;
-                if (node.VerticalLine && column == startColumn)
+                if (node.VerticalLine && column == startColumn && column != 0)
                 {
                     var upperNode = GetNode(row - 1, column);
                     if (upperNode != null && upperNode.VerticalLine == true)
@@ -219,12 +238,9 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                     case LadderType.Contact_B:
                         currentFlow = currentFlow && !node.Value; // Normally Closed
                         break;
-                    case LadderType.Coil:
-                        node.Value = currentFlow; // 결과 저장
-                        break;
                 }
-                var connectedNode = GetNode(row - 1, column + 1);
-                if(connectedNode != null && connectedNode.VerticalLine == true)
+                var upperNextNode = GetNode(row - 1, column + 1);
+                if(upperNextNode != null && upperNextNode.VerticalLine == true)
                 {
                     ComputeRow(row -1, column + 1, currentFlow);
                 }
@@ -239,6 +255,13 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             for (int row = 0; row < MaxRows; row++)
             {
                 ComputeRow(row, 0, true);
+            }
+            foreach (LadderNode node in this.Items)
+            {
+                if(node.Type == LadderType.Coil)
+                {
+                    node.Value = node.Flow;
+                }
             }
         }
     }
