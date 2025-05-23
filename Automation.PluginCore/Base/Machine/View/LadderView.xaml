@@ -9,7 +9,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
-             util:FocusExtension.IsFocused="{Binding IsFocused}" Focusable="True">
+             Focusable="True"
+             util:FocusExtension.IsFocused="{Binding IsFocused}" >
     <UserControl.InputBindings>
         <KeyBinding Command="{Binding CmdMove}" CommandParameter ="left" Key="Left"/>
         <KeyBinding Command="{Binding CmdMove}" CommandParameter ="right" Key="Right"/>
@@ -134,7 +135,7 @@
                    StrokeDashArray="4"
                    Canvas.Left="{Binding SelectedX, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}"
                    Canvas.Top="{Binding SelectedY, Converter={StaticResource MultiplyConverter}, ConverterParameter=40}" Fill="#190033FF"/>
-                <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl ItemsSource="{Binding Model.Logic}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Canvas />

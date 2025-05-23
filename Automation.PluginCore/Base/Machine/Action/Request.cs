@@ -1,6 +1,8 @@
-﻿using Automation.PluginCore.Interface;
+﻿using Automation.PluginCore.Control.PropertyGrid;
+using Automation.PluginCore.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace Automation.PluginCore.Base.Machine
             else
                 base.RemoveFromParent();
         }
+        [Editor(typeof(RequestActionEditor), typeof(RequestActionEditor))]
         public IAction Action
         {
             get => _action;

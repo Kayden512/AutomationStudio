@@ -1,93 +1,154 @@
 [
   {
+    "$type": "Automation.PluginCore.Base.Device.PLC.VirtualDevice, Automation.PluginCore",
+    "ActionMenu": [
+      "Automation.PluginCore.Base.Device.PLC.Action.ReadBit, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Automation.PluginCore.Base.Device.PLC.Action.WriteBit, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ],
+    "Actions": [
+      {
+        "$type": "Automation.PluginCore.Base.Device.PLC.Action.ReadBit, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "ReadBit",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Device.PLC.Action.WriteBit, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "WriteBit",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      }
+    ],
+    "Name": "Virtual Module",
+    "guid": "00000000-0000-0000-0000-000000000000",
+    "Items": []
+  },
+  {
     "$type": "Automation.PluginCore.Base.Machine.Machine, Automation.PluginCore",
     "Schedules": [
       {
         "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
         "IsEnabled": true,
-        "Name": "Read SN",
+        "Name": "Schedule",
         "guid": "00000000-0000-0000-0000-000000000000",
-        "Items": [
-          {
-            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "Items": [],
-            "IsEnabled": true,
-            "Name": "Move Home",
-            "Action": {
-              "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
-              "IsEnabled": true,
-              "Name": "Move Home",
-              "guid": "00000000-0000-0000-0000-000000000000",
-              "Items": []
-            },
-            "TypeName": "TestAction",
-            "guid": "00000000-0000-0000-0000-000000000000"
-          }
-        ]
+        "Items": []
+      }
+    ],
+    "Logic": [
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 0,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 1,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 1,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 2,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 3,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 4,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 5,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 6,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "X": 7,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 4,
+        "Name": "LadderNode",
+        "guid": "00000000-0000-0000-0000-000000000000",
+        "Items": []
       }
     ],
     "ActionMenu": [],
     "Actions": [],
     "Name": "Machine",
     "guid": "00000000-0000-0000-0000-000000000000",
-    "Items": [
-      {
-        "$type": "Automation.PluginCore.Base.Device.PLC.VirtualDevice, Automation.PluginCore",
-        "IsReal": true,
-        "String": null,
-        "Double": 1.0,
-        "Severity": 0,
-        "Int": 0,
-        "Collection": [],
-        "ActionMenu": [
-          "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-        ],
-        "Actions": [
-          {
-            "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
-            "IsEnabled": true,
-            "Name": "Move",
-            "guid": "00000000-0000-0000-0000-000000000000",
-            "Items": []
-          },
-          {
-            "$type": "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore",
-            "IsEnabled": true,
-            "Name": "Move Home",
-            "guid": "00000000-0000-0000-0000-000000000000",
-            "Items": []
-          }
-        ],
-        "Name": "Robot",
-        "guid": "00000000-0000-0000-0000-000000000000",
-        "Items": []
-      }
-    ]
+    "Items": []
   },
   {
     "$type": "Automation.PluginCore.Base.Machine.Machine, Automation.PluginCore",
     "Schedules": [],
+    "Logic": [],
     "ActionMenu": [],
     "Actions": [],
     "Name": "Machine2",
     "guid": "00000000-0000-0000-0000-000000000000",
-    "Items": [
-      {
-        "$type": "Automation.PluginCore.Base.Device.PLC.VirtualDevice, Automation.PluginCore",
-        "IsReal": false,
-        "String": null,
-        "Double": 0.0,
-        "Severity": 0,
-        "Int": 0,
-        "Collection": [],
-        "ActionMenu": [
-          "Automation.PluginCore.Base.Device.PLC.Action.TestAction, Automation.PluginCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-        ],
-        "Actions": [],
-        "Name": "VirtualDevice",
-        "guid": "00000000-0000-0000-0000-000000000000",
-        "Items": []
-      }
-    ]
+    "Items": []
   }
 ]

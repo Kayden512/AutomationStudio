@@ -21,7 +21,6 @@ namespace Automation.PluginCore.Util.Behavior
         }
 
         private Point _dragStartPoint;
-        //private object _draggedItem;
 
         protected override void OnAttached()
         {
@@ -79,7 +78,7 @@ namespace Automation.PluginCore.Util.Behavior
         {
             var hit = VisualTreeHelper.HitTest(AssociatedObject, position);
             DependencyObject obj = hit?.VisualHit;
-            while (obj != null && !(obj is ListBoxItem || obj is TreeViewItem || obj is ContentPresenter))
+            while (obj != null && !(obj is ListBoxItem || obj is TreeViewItem || obj is ContentPresenter || obj is ComboBoxItem))
             {
                 obj = VisualTreeHelper.GetParent(obj);
             }

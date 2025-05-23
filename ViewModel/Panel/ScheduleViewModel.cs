@@ -23,16 +23,20 @@ namespace AutomationStudio.ViewModel
         public override Type ViewType => typeof(ScheduleView);
         LadderViewModel LogicEditor = new LadderViewModel();
 
-
         public ICommand CmdOpenEditor => new RelayCommand(OpenEditor);
 
         public IMachine Machine
         {
             get => _machine;
-            set => SetProperty(ref _machine, value);
+            set
+            {
+                SetProperty(ref _machine, value);
+                LogicEditor.Model = Machine;
+            }
         }
         public void OpenEditor()
         {
+            if (Machine == null) return;
             LogicEditor.Model = Machine;
             Access.Instance.OpenDocument(LogicEditor);
         }

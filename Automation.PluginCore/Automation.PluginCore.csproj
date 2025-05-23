@@ -92,14 +92,16 @@
   <ItemGroup>
     <Compile Include="Access.cs" />
     <Compile Include="Base\ActionBase.cs" />
+    <Compile Include="Base\Device\PLC\Action\ReadBit.cs" />
     <Compile Include="Base\Device\PLC\Action\TestAction.cs" />
     <Compile Include="Base\DeviceBase.cs" />
+    <Compile Include="Base\Device\PLC\Action\WriteBit.cs" />
     <Compile Include="Base\Device\PLC\VirtualDevice.cs" />
     <Compile Include="Base\DocumentBase.cs" />
-    <Compile Include="Base\Machine\Request.cs" />
+    <Compile Include="Base\Machine\Action\Request.cs" />
     <Compile Include="Base\Machine\Resource\ILadder.cs" />
     <Compile Include="Base\Machine\Resource\LadderNodeBase.cs" />
-    <Compile Include="Base\Machine\Schedule.cs" />
+    <Compile Include="Base\Machine\Action\Schedule.cs" />
     <Compile Include="Base\Machine\Machine.cs" />
     <Compile Include="Base\Machine\ViewModel\LadderViewModel.cs" />
     <Compile Include="Base\Machine\View\LadderView.xaml.cs">
@@ -109,6 +111,7 @@
     <Compile Include="Base\NodeCollection.cs" />
     <Compile Include="Base\PanelBase.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="Control\PropertyGrid\RequestActionEditor.cs" />
     <Compile Include="CustomUI\UIElementBase.cs" />
     <Compile Include="CustomUI\ViewModel\UITextBlock.cs" />
     <Compile Include="CustomUI\View\UITextBlockView.xaml.cs">
@@ -226,8 +229,6 @@
   <ItemGroup>
     <Resource Include="Image\info.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Base\Machine\Action\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

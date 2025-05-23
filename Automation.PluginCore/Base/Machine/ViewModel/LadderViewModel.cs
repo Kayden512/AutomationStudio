@@ -33,8 +33,9 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             set => SetProperty(ref _isRunning, value);
         }
 
-        CancellationTokenSource _cts;
+        IMachine Machine => this.Model as IMachine; 
 
+        CancellationTokenSource _cts;
 
         public override Type ViewType => typeof(LadderView);
 
@@ -50,11 +51,9 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             set
             {
                 SetProperty(ref _selectedX, value);
-                INode node = this.Items.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
+                INode node = GetNode(SelectedY, SelectedX);
                 if (node != null)
-                {
                     this.SelectedNode = node;
-                }
             }
         }
         public int SelectedY
@@ -63,11 +62,9 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             set
             {
                 SetProperty(ref _selectedY, value);
-                INode node = this.Items.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
+                INode node = GetNode(SelectedY, SelectedX);
                 if (node != null)
-                {
                     this.SelectedNode = node;
-                }
             }
         }
 
@@ -92,7 +89,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                 // 이후에 제거
                 foreach (LadderNode node in toRemove)
                 {
-                    node.RemoveFromParent(); // 내부에서 this.Items.Remove(node) 같은 코드일 것
+                    node.RemoveFromParent();
                 }
 
                 _cts = new CancellationTokenSource();
@@ -145,7 +142,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         }
         public void OnAppend(object param)
         {
-            INode node = this.Items.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
+            INode node = GetNode(SelectedY, SelectedX);
             if (node != null && param.ToString() != "down")
             {
                 node.RemoveFromParent();
@@ -153,37 +150,37 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             switch (param.ToString())
             {
                 case "empty":
-                    this.Items.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None });
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None });
                     break;
                 case "contact_a":
-                    this.Items.Add(new LadderNode() { X = SelectedX, Y = SelectedY , Type = LadderType.Contact_A});
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY , Type = LadderType.Contact_A});
                     break;
                 case "contact_b":
-                    this.Items.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Contact_B });
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Contact_B });
                     break;
                 case "line":
-                    this.Items.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.HorizontalLine });
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.HorizontalLine });
                     break;
                 case "down":
                     if(node == null)
                     {
                         node = new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None };
-                        this.Items.Add(node);
+                        Machine.Logic.Add(node);
                     }
                     (node as LadderNode).VerticalLine = !(node as LadderNode).VerticalLine;
                     break;
                 case "coil":
-                    this.Items.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Coil });
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Coil });
                     break;
             }
-            node = this.Items.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
+            node = Machine.Logic.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
             if (node != null)
                 SelectedNode = node;
         }
         
         public LadderNode GetNode(int row, int column)
         {
-            INode node = Items.ToList().Find(x => (x as LadderNode).X == column && (x as LadderNode).Y == row);
+            INode node = Machine.Logic.ToList().Find(x => (x as LadderNode).X == column && (x as LadderNode).Y == row);
 
             if(node != null) 
                 return node as LadderNode;
@@ -248,7 +245,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         }
         public void Compute()
         {
-            foreach(LadderNode node in this.Items)
+            foreach(LadderNode node in Machine.Logic)
             {
                 node.Flow = false;
             }
@@ -256,7 +253,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             {
                 ComputeRow(row, 0, true);
             }
-            foreach (LadderNode node in this.Items)
+            foreach (LadderNode node in Machine.Logic)
             {
                 if(node.Type == LadderType.Coil)
                 {

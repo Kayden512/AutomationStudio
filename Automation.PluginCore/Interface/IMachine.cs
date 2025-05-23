@@ -10,5 +10,6 @@ namespace Automation.PluginCore.Interface
     public interface IMachine : IDevice, IGroup
     {
         NodeCollection Schedules { get; }
+        NodeCollection Logic { get; }
     }
 }

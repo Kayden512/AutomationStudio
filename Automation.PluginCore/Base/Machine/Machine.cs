@@ -16,6 +16,9 @@ namespace Automation.PluginCore.Base.Machine
         [Browsable(false)]
         public NodeCollection Schedules { get; set; } = new NodeCollection();
 
+        [Browsable(false)]
+        public NodeCollection Logic { get; set; } = new NodeCollection();
+
         [JsonIgnore]
         [Browsable(false)]
         public virtual List<Type> ScheduleMenu => new List<Type>() { typeof(Schedule), typeof(Request) };
@@ -23,6 +26,7 @@ namespace Automation.PluginCore.Base.Machine
         public Machine() : base()
         {
             this.Schedules.CollectionChanged += Items_CollectionChanged;
+            this.Logic.CollectionChanged += Items_CollectionChanged;
         }
     }
 }
