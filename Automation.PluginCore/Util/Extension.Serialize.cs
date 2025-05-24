@@ -15,9 +15,6 @@ namespace Automation.PluginCore.Util
             TypeNameHandling = TypeNameHandling.Auto,
             Formatting = Formatting.Indented
         };
-        /// <summary>
-        /// 객체 리스트를 JSON으로 저장
-        /// </summary>
         public static void SaveToJson<T>(string path, T data)
         {
             var json = JsonConvert.SerializeObject(data, _settings);

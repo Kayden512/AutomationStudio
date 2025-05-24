@@ -21,7 +21,7 @@ namespace Automation.PluginCore.Base
 
         public void OnClose()
         {
-            Access.Instance.CloseDocument(this);
+            Extension.CloseDocument(this);
         }
     }
 }

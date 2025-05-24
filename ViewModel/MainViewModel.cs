@@ -11,6 +11,7 @@ using Automation.PluginCore.Util;
 using AvalonDock.Layout.Serialization;
 using AvalonDock;
 using Automation.PluginCore;
+using System.Linq;
 
 namespace AutomationStudio.ViewModel
 {
@@ -85,7 +86,7 @@ namespace AutomationStudio.ViewModel
 
         public MainViewModel()
         {
-            Access.Instance.Main = this;
+            Extension.Main = this;
             PluginManager.LoadPlugins("Plugin");
             LoadPanel();
             LoadData();
@@ -161,6 +162,54 @@ namespace AutomationStudio.ViewModel
                 document.PropertyChanged -= viewModelPropertyChanged;
                 this.Documents.Remove(document);
             }
+        }
+
+
+        public List<IAction> GetAction(Type[] baseTypes = null)
+        {
+            List<IAction> actions = new List<IAction>();
+            foreach(IDevice device in deviceGroup.Items)
+            {
+                foreach(IAction action in device.Actions)
+                {
+                    if(baseTypes == null)
+                        actions.Add(action);
+                    else
+                    {
+                        foreach(Type t in baseTypes)
+                        {
+                            if(t.IsAssignableFrom(action.GetType()))
+                            {
+                                actions.Add(action);
+                            }
+                        }
+
+                    }
+                }
+                if (device is IMachine machine)
+                {
+                    foreach (IDevice innerDevice in machine.Items)
+                    {
+                        foreach (IAction action in device.Actions)
+                        {
+                            if (baseTypes == null)
+                                actions.Add(action);
+                            else
+                            {
+                                foreach (Type t in baseTypes)
+                                {
+                                    if (t.IsAssignableFrom(action.GetType()))
+                                    {
+                                        actions.Add(action);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            return actions;
         }
 
         /// <summary>

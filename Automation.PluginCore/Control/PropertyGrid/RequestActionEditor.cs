@@ -1,5 +1,6 @@
 ﻿using Automation.PluginCore.Base;
 using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
 using Microsoft.Xaml.Behaviors;
 using System;
@@ -23,6 +24,15 @@ namespace Automation.PluginCore.Control.PropertyGrid
             this.Item = propertyItem;
             ComboBox combo = new ComboBox();
             combo.DataContext = this;
+            List<IAction> actions = Extension.GetAction();
+            combo.ItemsSource = actions;
+
+            var binding = new Binding("Action")
+            {
+                Source = Item.Instance,
+                Mode = BindingMode.TwoWay
+            };
+            combo.SetBinding(ComboBox.SelectedItemProperty, binding);
 
             var behaviors = Interaction.GetBehaviors(combo);
             if(!behaviors.OfType<ItemsControlDragDropBehavior>().Any())

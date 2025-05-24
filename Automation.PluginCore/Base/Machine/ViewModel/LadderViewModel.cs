@@ -43,8 +43,6 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         public ICommand CmdMove => new RelayCommand<object>(OnMove);
         public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
 
-        //public ObservableCollection<INode>
-
         public int SelectedX
         {
             get => _selectedX;
@@ -67,7 +65,6 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                     this.SelectedNode = node;
             }
         }
-
         public void SelectCell(Point clickPoint)
         {
             SelectedX = (int)(clickPoint.X / 60);

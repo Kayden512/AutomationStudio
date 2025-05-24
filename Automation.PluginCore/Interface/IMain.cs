@@ -10,5 +10,6 @@ namespace Automation.PluginCore.Interface
     {
         void OpenDocument(IDocument document);
         void CloseDocument(IDocument document);
+        List<IAction> GetAction(Type[] baseTypes);
     }
 }

@@ -38,7 +38,7 @@ namespace AutomationStudio.ViewModel
         {
             if (Machine == null) return;
             LogicEditor.Model = Machine;
-            Access.Instance.OpenDocument(LogicEditor);
+            Extension.OpenDocument(LogicEditor);
         }
 
         public override void OnSelect(object param)

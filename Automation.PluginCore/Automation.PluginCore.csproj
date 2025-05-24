@@ -90,7 +90,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access.cs" />
     <Compile Include="Base\ActionBase.cs" />
     <Compile Include="Base\Device\PLC\Action\ReadBit.cs" />
     <Compile Include="Base\Device\PLC\Action\TestAction.cs" />
@@ -146,8 +145,9 @@
     <Compile Include="Util\Converter\MultiplyConverter.cs" />
     <Compile Include="Util\Converter\TypeToIconConverter.cs" />
     <Compile Include="Util\ErrorItem.cs" />
-    <Compile Include="Util\Extension.cs" />
-    <Compile Include="Util\Extension.ErrorItem.cs" />
+    <Compile Include="Util\Extension.Serialize.cs" />
+    <Compile Include="Util\Extension.Document.cs" />
+    <Compile Include="Util\Extension.Action.cs" />
     <Compile Include="Util\FocusExtension.cs" />
     <Compile Include="Util\PluginManager.cs" />
     <Compile Include="Util\RelayCommand.cs" />
