@@ -72,7 +72,15 @@ namespace Automation.PluginCore.Base.Machine.Resource
             get => _referencePath;
             set
             {
+                IValueHolder prevHolder = Extension.GetNodeById(_referencePath) as IValueHolder;
+                if (prevHolder != null)
+                    prevHolder.ValueChanged -= Reference_ValueChanged;
+
                 SetProperty(ref _referencePath, value);
+                if (Guid.Empty.Equals(_reference) == false)
+                {
+                    this.Activate();
+                }
             }
         }
 

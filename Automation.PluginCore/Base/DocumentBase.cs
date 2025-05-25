@@ -18,6 +18,9 @@ namespace Automation.PluginCore.Base
             get => _model;
             set => SetProperty(ref _model, value);
         }
+
+        public bool CanClose => true;
+
         public ICommand CmdClose => new RelayCommand(OnClose);
 
         public void OnClose()

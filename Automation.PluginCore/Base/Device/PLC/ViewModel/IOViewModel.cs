@@ -77,10 +77,17 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
                 PagedInputBits.Add(bit);
         }
 
+        public ICommand CmdToggle => new RelayCommand<object>(OnToggle);
         public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
         public ICommand CmdRemove => new RelayCommand<object>(OnRemove);
         public ICommand CmdInputPrevPage => new RelayCommand(PreviousPage);
         public ICommand CmdInputNextPage => new RelayCommand(NextPage);
+        public void OnToggle(object param)
+        {
+            if (param == null) return;
+            if (param is IValueHolder<bool> node)
+                node.Value = !node.Value;
+        }
 
         public override void OnSelect(object param)
         {
