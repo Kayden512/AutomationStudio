@@ -31,7 +31,12 @@ namespace Automation.PluginCore.Base
             set => SetProperty(ref _selectedNode, value);
         }
 
+        public ICommand CmdSelect => new RelayCommand<object>(OnSelect);
         public ICommand CmdDrop => new RelayCommand<DropData>(OnDrop);
+        public virtual void OnSelect(object param)
+        {
+
+        }
 
         public virtual void OnDrop(DropData drop)
         {

@@ -28,19 +28,27 @@ namespace Automation.PluginCore.Util.Extension
             return _nodes.TryGetValue(id, out var node) ? node : null;
         }
 
-        public static List<IAction> GetActions(Type[] types = null)
+        public static List<INode> GetNodes(Type[] baseTypes = null)
         {
-            return Main.GetActions(types);
-        }
-
-        /// <summary>
-        /// Find Node by path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static INode GetNodeByPath(string path)
-        {
-            return Main.FindNode(path);
+            List<INode> nodes = new List<INode>();
+            foreach(var keyValue in _nodes)
+            {
+                if(baseTypes == null)
+                {
+                    nodes.Add(keyValue.Value);
+                }
+                else
+                {
+                    foreach (Type type in baseTypes)
+                    {
+                        if (type.IsAssignableFrom(keyValue.Value.GetType()))
+                        {
+                            nodes.Add(keyValue.Value);
+                        }
+                    }
+                }
+            }
+            return nodes;
         }
     }
 }

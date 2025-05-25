@@ -27,6 +27,7 @@ namespace Automation.PluginCore.Interface
         IEnumerable<IErrorItem> Validate();
         IEnumerable<IErrorItem> CollectErrors();
 
+        void Register();
         void Activate();
     }
 }

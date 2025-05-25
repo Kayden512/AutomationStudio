@@ -9,16 +9,12 @@ namespace Automation.PluginCore.Base
         bool _isVisible = true;
 
         #region Command
-        public ICommand CmdSelect => new RelayCommand<object>(OnSelect);
         public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
         public ICommand CmdRemove => new RelayCommand<object>(OnRemove);
         public ICommand CmdSave => new RelayCommand(OnSave);
         #endregion
 
         #region CommandMethod
-        public virtual void OnSelect(object param)
-        {
-        }
         public virtual void OnAppend(object param)
         {
         }

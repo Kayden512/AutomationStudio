@@ -19,24 +19,24 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace Automation.PluginCore.Control.PropertyGrid
 {
-    public class RequestActionEditor : ViewModelBase, ITypeEditor
+    public class ValueHolderEditor : ViewModelBase, ITypeEditor
     {
         PropertyItem Item { get; set; }
         public FrameworkElement ResolveEditor(PropertyItem propertyItem)
         {
             this.Item = propertyItem;
             ComboBox combo = new ComboBox();
+
             combo.DataContext = this;
 
-            //List<IAction> actions = Extension.GetActions();
+            List<INode> nodes = Extension.GetNodes(new Type[] { typeof(IValueHolder) });
+            //nodes = nodes.Where(n => !(n is Request || n is Schedule)).ToList();
 
-            List<INode> nodes = Extension.GetNodes(new Type[] { typeof(IAction) });
-            nodes = nodes.Where(n => !(n is Request || n is Schedule)).ToList();
             List<string> paths = nodes.Select(a => a.Path).ToList();
 
             combo.ItemsSource = paths;
 
-            var binding = new Binding("ActionPath")
+            var binding = new Binding(Item.PropertyName)
             {
                 Source = Item.Instance,
                 Mode = BindingMode.TwoWay,

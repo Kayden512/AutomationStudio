@@ -94,12 +94,35 @@ namespace Automation.PluginCore.Base
         #endregion
 
         #region Activate
-
-        public virtual void Activate()
+        public virtual void Register()
         {
             //Node 활성화
             Extension.Register(this);
 
+            //클래스 내 모든 속성 INode
+            var nodeProperties = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                     .Where(p => typeof(INode).IsAssignableFrom(p.PropertyType));
+
+            foreach (var prop in nodeProperties)
+            {
+                var node = prop.GetValue(this) as INode;
+                if (node == this.Parent) continue;
+                node?.Register();
+            }
+
+            ////클래스 내 모든 필드 NodeCollecion
+            var nodeCollection = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                     .Where(p => typeof(NodeCollection).IsAssignableFrom(p.PropertyType));
+
+            foreach (var prop in nodeCollection)
+            {
+                var collection = prop.GetValue(this) as NodeCollection;
+                foreach (INode node in collection)
+                    node?.Register();
+            }
+        }
+        public virtual void Activate()
+        {
             //클래스 내 모든 속성 INode
             var nodeProperties = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
                                      .Where(p => typeof(INode).IsAssignableFrom(p.PropertyType));

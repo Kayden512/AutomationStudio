@@ -149,58 +149,62 @@
                     </ItemsControl.ItemContainerStyle>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="60" Height="50">
-                                <Path Fill="Green" Data="M 25,5 V 15 H 35 V 5">
-                                    <Path.Style>
-                                        <Style TargetType="Path">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Value}" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Path.Style>
-                                </Path>
-                                <Path Stroke="{StaticResource TextBrush}" StrokeThickness="2">
-                                    <Path.Style>
-                                        <Style TargetType="Path">
-                                            
-                                            <Setter Property="Data" Value=""/>
-                                            
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Type}" Value="Contact_A">
-                                                    <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Type}" Value="Contact_B">
-                                                    <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10 M 17,2 L 43,18"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Type}" Value="HorizontalLine">
-                                                    <Setter Property="Data" Value="M 0,10 L 60,10"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Type}" Value="Coil">
-                                                    <Setter Property="Data" Value="M 0,10 L 20,10 
-                                                                                    M 25,0 C 20,0 20,20 25,20 
-                                                                                    M 35,20 C 40,20 40,0 35,0 
-                                                                                    M 40,10 L 60,10"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Path.Style>
-                                </Path>
-                                <Path Stroke="{StaticResource TextBrush}" Data="M 0,10 L 0,50" StrokeThickness="2">
-                                    <Path.Style>
-                                        <Style TargetType="Path">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding VerticalLine}" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Path.Style>
-                                </Path>
-                            </Grid>
+                            <StackPanel>
+                                <Grid Width="60" Height="50">
+                                    <Path Fill="Green" Data="M 25,5 V 15 H 35 V 5">
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                    <Path Stroke="{StaticResource TextBrush}" StrokeThickness="2">
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+
+                                                <Setter Property="Data" Value=""/>
+
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Type}" Value="Contact_A">
+                                                        <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Type}" Value="Contact_B">
+                                                        <Setter Property="Data" Value="M 0,10 L 20,10 M 20,0 L 20,20 M 40,0 L 40,20 M 40,10 L 60,10 M 17,2 L 43,18"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Type}" Value="HorizontalLine">
+                                                        <Setter Property="Data" Value="M 0,10 L 60,10"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Type}" Value="Coil">
+                                                        <Setter Property="Data" Value="M 0,10 L 20,10 
+                                                        M 25,0 C 20,0 20,20 25,20 
+                                                        M 35,20 C 40,20 40,0 35,0 
+                                                        M 40,10 L 60,10"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                    <Path Stroke="{StaticResource TextBrush}" Data="M 0,10 L 0,50" StrokeThickness="2">
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding VerticalLine}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                    <TextBlock Text="{Binding Reference.Name}" Foreground="{StaticResource TextBrush}" 
+                                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+                                </Grid>
+                            </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

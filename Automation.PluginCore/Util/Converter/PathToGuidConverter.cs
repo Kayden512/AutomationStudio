@@ -24,7 +24,7 @@ namespace Automation.PluginCore.Util.Converter
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var path = value as string;
-            var action = Extension.Extension.GetActions().FirstOrDefault(a => a.Path == path);
+            var action = Extension.Extension.GetNodes().FirstOrDefault(a => a.Path == path);
             return action?.Id ?? Guid.Empty;
         }
     }

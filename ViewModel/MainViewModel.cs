@@ -87,8 +87,12 @@ namespace AutomationStudio.ViewModel
         {
             Extension.Main = this;
             PluginManager.LoadPlugins("Plugin");
+            
             LoadPanel();
+            
             LoadData();
+
+            Register();
             Activate();
         }
         void LoadPanel()
