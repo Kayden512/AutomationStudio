@@ -3,10 +3,12 @@ using Automation.PluginCore.Base.Device.PLC;
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
+using Automation.PluginCore.Util.Extension;
 using AutomationStudio.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,7 +34,7 @@ namespace AutomationStudio.ViewModel
             if (param == null) return;
             var obj = Activator.CreateInstance(param as Type);
             INode newNode = obj as INode;
-            this.Items.Add(newNode);
+            this.AddChild(newNode);
         }
         public override void OnRemove(object param)
         {
@@ -71,5 +73,6 @@ namespace AutomationStudio.ViewModel
                 }
             }
         }
+
     }
 }

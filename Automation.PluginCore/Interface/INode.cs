@@ -12,7 +12,7 @@ namespace Automation.PluginCore.Interface
     {
         string Icon { get; }
         string Name { get; }
-        Guid guid { get; }
+        Guid Id { get; }
         bool IsSelected { get; }
 
         #region Tree

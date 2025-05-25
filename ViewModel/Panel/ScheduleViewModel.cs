@@ -5,6 +5,7 @@ using Automation.PluginCore.Base.Machine.ViewModel;
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
+using Automation.PluginCore.Util.Extension;
 using AutomationStudio.View;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace AutomationStudio.ViewModel
             var obj = Activator.CreateInstance(param as Type);
             INode newNode = obj as INode;
             if (newNode is Schedule)
-                Machine.Schedules.Add(newNode);
+                Machine.AddSchedule(newNode);
             else
             {
                 if (this.SelectedNode is Schedule)
@@ -83,7 +84,7 @@ namespace AutomationStudio.ViewModel
                 Request request = new Request()
                 {
                     Name = drop.Source.Name,
-                    Action = drop.Source as IAction
+                    ActionPath = drop.Source.Id,
                 };
                 if (drop.Target is Schedule schedule)
                 {

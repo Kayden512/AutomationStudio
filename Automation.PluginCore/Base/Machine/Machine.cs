@@ -1,10 +1,13 @@
 ﻿using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
+using Automation.PluginCore.Util.Extension;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Base.Machine
@@ -22,6 +25,14 @@ namespace Automation.PluginCore.Base.Machine
         [JsonIgnore]
         [Browsable(false)]
         public virtual List<Type> ScheduleMenu => new List<Type>() { typeof(Schedule), typeof(Request) };
+
+        public virtual void AddSchedule(INode schedule)
+        {
+            schedule.RemoveFromParent();
+            schedule.Parent = this;
+            this.Schedules.Add(schedule);
+            Extension.Register(schedule);
+        }
 
         public Machine() : base()
         {

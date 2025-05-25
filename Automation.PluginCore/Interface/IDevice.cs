@@ -13,5 +13,6 @@ namespace Automation.PluginCore.Interface
         void Connect();
         void Disconnect();
         void Initialize();
+        void AddAction(INode action);
     }
 }

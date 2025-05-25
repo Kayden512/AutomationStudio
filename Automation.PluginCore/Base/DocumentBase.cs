@@ -1,5 +1,6 @@
 ﻿using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
+using Automation.PluginCore.Util.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;

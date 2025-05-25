@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace Automation.PluginCore.Base
 {
+    [CategoryOrder("Result", 99)]
     public abstract class ActionBase : NodeBase, IAction
     {
         bool _isEnabled = true;
@@ -18,7 +20,7 @@ namespace Automation.PluginCore.Base
 
         [JsonIgnore]
         [Browsable(false)]
-        public IDevice Device => Parent == null ? null : Parent as IDevice;
+        protected IDevice Device => Parent == null ? null : Parent as IDevice;
         [Category("Base")]
         public bool IsEnabled
         {

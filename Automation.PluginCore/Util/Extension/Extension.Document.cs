@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automation.PluginCore.Util
+namespace Automation.PluginCore.Util.Extension
 {
     public static partial class Extension
     {

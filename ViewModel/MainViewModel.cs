@@ -12,6 +12,7 @@ using AvalonDock.Layout.Serialization;
 using AvalonDock;
 using Automation.PluginCore;
 using System.Linq;
+using Automation.PluginCore.Util.Extension;
 
 namespace AutomationStudio.ViewModel
 {
@@ -24,13 +25,13 @@ namespace AutomationStudio.ViewModel
         public ObservableCollection<IViewModel> Documents { get; protected set; } = new ObservableCollection<IViewModel>();
         public ObservableCollection<IViewModel> Panels { get; protected set; } = new ObservableCollection<IViewModel>();
 
-        public DeviceGroupViewModel deviceGroup;
-        public ActionViewModel action;
-        public ScheduleViewModel schedule;
-        public CustomScreenEditorViewModel CustomScreenEditor;
-        public PropertyEditorViewModel propertyEditor;
-        public LogViewModel log;
-        public ErrorListViewModel errorList;
+        public DeviceGroupViewModel deviceGroup { get; set; }
+        public ActionViewModel action { get; set; }
+        public ScheduleViewModel schedule { get; set; }
+        public CustomScreenEditorViewModel CustomScreenEditor { get; set; }
+        public PropertyEditorViewModel propertyEditor { get; set; }
+        public LogViewModel log { get; set; }
+        public ErrorListViewModel errorList { get; set; }
 
         public IViewModel ActiveContent
         {
@@ -43,7 +44,6 @@ namespace AutomationStudio.ViewModel
                 if (_activeContent != null)
                     _activeContent.IsFocused = true;
             }
-                    
         }
         public INode Clipboard
         {
@@ -59,6 +59,7 @@ namespace AutomationStudio.ViewModel
         #endregion
         public void OnEnvironment()
         {
+            Automation.PluginCore.Environment.Instance.CurrentNodes = Extension._nodes;
             this.propertyEditor.SelectedObject = Automation.PluginCore.Environment.Instance;
         }
 
@@ -74,9 +75,7 @@ namespace AutomationStudio.ViewModel
             if (DockingManager == null || !File.Exists("Layout.xml")) return;
 
             var serializer = new XmlLayoutSerializer(DockingManager);
-            serializer.LayoutSerializationCallback += (s, e) =>
-            {
-            };
+            serializer.LayoutSerializationCallback += (s, e) =>{ };
             serializer.Deserialize("Layout.xml");
         }
         public void OnHelp()
@@ -90,6 +89,7 @@ namespace AutomationStudio.ViewModel
             PluginManager.LoadPlugins("Plugin");
             LoadPanel();
             LoadData();
+            Activate();
         }
         void LoadPanel()
         {
@@ -164,8 +164,7 @@ namespace AutomationStudio.ViewModel
             }
         }
 
-
-        public List<IAction> GetAction(Type[] baseTypes = null)
+        public List<IAction> GetActions(Type[] baseTypes = null)
         {
             List<IAction> actions = new List<IAction>();
             foreach(IDevice device in deviceGroup.Items)
@@ -190,7 +189,7 @@ namespace AutomationStudio.ViewModel
                 {
                     foreach (IDevice innerDevice in machine.Items)
                     {
-                        foreach (IAction action in device.Actions)
+                        foreach (IAction action in innerDevice.Actions)
                         {
                             if (baseTypes == null)
                                 actions.Add(action);
@@ -210,6 +209,21 @@ namespace AutomationStudio.ViewModel
                 }
             }
             return actions;
+        }
+
+        public override INode FindNode(string path)
+        {
+            if (path == null) return null;
+            var segments = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (segments[0] == "Device")
+            {
+                return deviceGroup.FindNode(path);
+            }
+            else if(segments[0] == "Custom")
+            {
+                return CustomScreenEditor.FindNode(path);
+            }
+            return null;
         }
 
         /// <summary>

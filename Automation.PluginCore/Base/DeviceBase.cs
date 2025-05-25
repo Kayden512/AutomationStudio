@@ -1,4 +1,6 @@
 ﻿using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
+using Automation.PluginCore.Util.Extension;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +42,59 @@ namespace Automation.PluginCore.Base
         [Browsable(false)]
         public NodeCollection Actions { get; set; } = new NodeCollection();
 
+        public void Connect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Disconnect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void AddAction(INode action)
+        {
+            action.RemoveFromParent();
+            action.Parent = this;
+            Extension.Register(action);
+            this.Actions.Add(action);
+        }
+
+        public override INode FindNode(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                return null;
+            var segments = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (!string.Equals(this.Name, segments[0], StringComparison.OrdinalIgnoreCase))
+                return null;
+            if (segments.Length == 1)
+                return this;
+            var nextPath = string.Join("/", segments.Skip(1));
+            foreach (var child in Items)
+            {
+                if (child is NodeBase node)
+                {
+                    var result = node.FindNode(nextPath);
+                    if (result != null)
+                        return result;
+                }
+            }
+            foreach (var child in Actions)
+            {
+                if (child is NodeBase node)
+                {
+                    var result = node.FindNode(nextPath);
+                    if (result != null)
+                        return result;
+                }
+            }
+            return null;
+        }
         public override IEnumerable<IErrorItem> CollectErrors()
         {
             foreach (var error in Validate())
@@ -56,22 +111,6 @@ namespace Automation.PluginCore.Base
                     yield return error;
             }
         }
-
-        public void Connect()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Disconnect()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Initialize()
-        {
-            throw new NotImplementedException();
-        }
-
         public DeviceBase() : base()
         {
             this.Actions.CollectionChanged += Items_CollectionChanged;

@@ -1,11 +1,14 @@
 ﻿using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
+using Automation.PluginCore.Util.Extension;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -32,7 +35,7 @@ namespace Automation.PluginCore.Base
             set => SetProperty(ref _name, value);
         }
         [Browsable(false)]
-        public Guid guid => Guid.Empty;
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [JsonIgnore]
         [Browsable(false)]
@@ -77,6 +80,7 @@ namespace Automation.PluginCore.Base
         }
         public virtual void RemoveFromParent()
         {
+            Extension.Unregister(this);
             Parent?.Items.Remove(this);
         }
 
@@ -84,27 +88,43 @@ namespace Automation.PluginCore.Base
         {
             child.RemoveFromParent();
             child.Parent = this;
+            Extension.Register(child);
             Items.Add(child);
         }
         #endregion
 
         #region Activate
-        /// <summary>
-        /// 저장 시 string으로 저장되고 런타임중 Node가 되는 객체들의 데이터 Load 이후 활성화 
-        /// </summary>
+
         public virtual void Activate()
         {
             //Node 활성화
+            Extension.Register(this);
 
-            //모든 자식 Node 활성화
-            foreach (INode node in Items)
+            //클래스 내 모든 속성 INode
+            var nodeProperties = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                     .Where(p => typeof(INode).IsAssignableFrom(p.PropertyType));
+
+            foreach (var prop in nodeProperties)
             {
-                node.Activate();
+                var node = prop.GetValue(this) as INode;
+                if (node == this.Parent) continue;
+                node?.Activate();
+            }
+
+            ////클래스 내 모든 필드 NodeCollecion
+            var nodeCollection = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                     .Where(p => typeof(NodeCollection).IsAssignableFrom(p.PropertyType));
+
+            foreach (var prop in nodeCollection)
+            {
+                var collection = prop.GetValue(this) as NodeCollection;
+                foreach (INode node in collection)
+                    node?.Activate();
             }
         }
         public virtual IEnumerable<IErrorItem> Validate()
         {
-            //이름이 비어 있으면 오류
+            //경로 추적 불가 시 경고
             if (Parent == null)
             {
                 yield return new ErrorItem
@@ -166,6 +186,12 @@ namespace Automation.PluginCore.Base
         }
         #endregion
 
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+            //Extension.Register(this);//역직렬화 이후 실행됨
+        }
+
         #region IDisposable
         private bool disposedValue;
         protected virtual void Dispose(bool disposing)
@@ -174,6 +200,7 @@ namespace Automation.PluginCore.Base
             {
                 if (disposing)
                 {
+                    Extension.Unregister(this);
                 }
                 disposedValue = true;
             }

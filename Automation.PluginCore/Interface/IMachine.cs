@@ -11,5 +11,7 @@ namespace Automation.PluginCore.Interface
     {
         NodeCollection Schedules { get; }
         NodeCollection Logic { get; }
+
+        void AddSchedule(INode schedule);
     }
 }

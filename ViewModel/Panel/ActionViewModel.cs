@@ -39,7 +39,7 @@ namespace AutomationStudio.ViewModel
             if (param == null) return;
             var obj = Activator.CreateInstance(param as Type);
             INode newNode = obj as INode;
-            Device.Actions.Add(newNode);
+            Device.AddAction(newNode as IAction);
         }
         public override void OnRemove(object param)
         {

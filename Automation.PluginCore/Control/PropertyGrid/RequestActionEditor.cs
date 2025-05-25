@@ -2,6 +2,8 @@
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
+using Automation.PluginCore.Util.Converter;
+using Automation.PluginCore.Util.Extension;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Collections.Generic;
@@ -24,13 +26,15 @@ namespace Automation.PluginCore.Control.PropertyGrid
             this.Item = propertyItem;
             ComboBox combo = new ComboBox();
             combo.DataContext = this;
-            List<IAction> actions = Extension.GetAction();
-            combo.ItemsSource = actions;
+            List<IAction> actions = Extension.GetActions();
+            List<string> paths = actions.Select(a => a.Path).ToList();
+            combo.ItemsSource = paths;
 
-            var binding = new Binding("Action")
+            var binding = new Binding("ActionPath")
             {
                 Source = Item.Instance,
-                Mode = BindingMode.TwoWay
+                Mode = BindingMode.TwoWay,
+                Converter = new PathToGuidConverter()
             };
             combo.SetBinding(ComboBox.SelectedItemProperty, binding);
 
@@ -48,7 +52,7 @@ namespace Automation.PluginCore.Control.PropertyGrid
         public override void OnDrop(DropData drop)
         {
             if (drop.Source is IAction action)
-                Item.Value = action;
+                Item.Value = action.Id;
         }
     }
 }

@@ -11,19 +11,19 @@
         "$type": "Automation.PluginCore.Base.Device.PLC.Action.ReadBit, Automation.PluginCore",
         "IsEnabled": true,
         "Name": "ReadBit",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "6f648c33-6585-44a2-a0d3-f7294e53644b",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Action.WriteBit, Automation.PluginCore",
         "IsEnabled": true,
         "Name": "WriteBit",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "2bdc4816-8c87-4819-8076-3573415cb427",
         "Items": []
       }
     ],
-    "Name": "Virtual Module",
-    "guid": "00000000-0000-0000-0000-000000000000",
+    "Name": "Memory",
+    "Id": "3397ce6c-67a0-4fb8-90a9-7e1164289875",
     "Items": []
   },
   {
@@ -33,8 +33,36 @@
         "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
         "IsEnabled": true,
         "Name": "Schedule",
-        "guid": "00000000-0000-0000-0000-000000000000",
-        "Items": []
+        "Id": "bef1b619-f900-407d-b40c-14d284c2ffc9",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
+            "IsEnabled": true,
+            "Name": "ReadBit",
+            "Id": "37b9c304-acd7-4f90-912b-7a11401f12db",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
+            "IsEnabled": true,
+            "Name": "WriteBit",
+            "Id": "1d1ad8da-4d44-45e9-8961-386926e98af3",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "6f648c33-6585-44a2-a0d3-f7294e53644b",
+            "IsEnabled": true,
+            "Name": "TestAction",
+            "Id": "aa845373-bf3f-4e01-8560-3d6d7f714cd5",
+            "Items": []
+          }
+        ]
       }
     ],
     "Logic": [
@@ -47,7 +75,7 @@
         "VerticalLine": false,
         "Type": 1,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "76b4266c-edc3-4975-8828-599ccc7b2ced",
         "Items": []
       },
       {
@@ -59,7 +87,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "0605cf3a-065a-4472-bdb8-7ddbc2b43fbf",
         "Items": []
       },
       {
@@ -71,7 +99,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "5cb16492-553a-49e3-b3a9-b86bba2e3634",
         "Items": []
       },
       {
@@ -83,7 +111,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "eee1a9f7-9cbf-4a25-ae52-86d62adbb93e",
         "Items": []
       },
       {
@@ -95,7 +123,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "47b33c69-ecad-441d-beef-ea3069704451",
         "Items": []
       },
       {
@@ -107,7 +135,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "cbeba027-e987-4764-8501-b4398744fbac",
         "Items": []
       },
       {
@@ -119,7 +147,7 @@
         "VerticalLine": false,
         "Type": 3,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "d57e9b8b-10b1-4213-8422-fb16307c582c",
         "Items": []
       },
       {
@@ -131,14 +159,14 @@
         "VerticalLine": false,
         "Type": 4,
         "Name": "LadderNode",
-        "guid": "00000000-0000-0000-0000-000000000000",
+        "Id": "b813b6e7-e749-4e69-9a19-6c561533adcb",
         "Items": []
       }
     ],
     "ActionMenu": [],
     "Actions": [],
     "Name": "Machine",
-    "guid": "00000000-0000-0000-0000-000000000000",
+    "Id": "1399b58c-df6d-49e7-9c42-591128344a47",
     "Items": []
   },
   {
@@ -148,7 +176,7 @@
     "ActionMenu": [],
     "Actions": [],
     "Name": "Machine2",
-    "guid": "00000000-0000-0000-0000-000000000000",
+    "Id": "5d55bb4c-468a-4d36-8a68-95814bff541c",
     "Items": []
   }
 ]

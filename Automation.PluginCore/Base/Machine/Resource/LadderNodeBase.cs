@@ -1,4 +1,5 @@
 ﻿using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util.Extension;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,7 @@ namespace Automation.PluginCore.Base.Machine.Resource
         public override void RemoveFromParent()
         {
             (this.Parent as IMachine).Logic.Remove(this);
+            Extension.Unregister(this);
         }
     }
 }
