@@ -11,6 +11,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <!--Input View-->
         <Grid Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <Grid Margin="5,0,5,0"  Height="30">
@@ -61,71 +62,65 @@
                 <!-- 페이징 버튼 -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <Button Content="◀" Command="{Binding CmdInputPrevPage}"/>
-                    <TextBlock Text="{Binding PageDisplay}" Margin="10,0"/>
+                    <TextBlock Text="{Binding InputPageDisplay}" Margin="10,0"/>
                     <Button Content="▶" Command="{Binding CmdInputNextPage}"/>
                 </StackPanel>
-                <!--<ListView ItemsSource="{Binding Model.Input}" Margin="5,0,5,0">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" Rows="16" />
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="1" Orientation="Horizontal">
-                                <Path Style="{StaticResource Icon}"
-                                      Data="{Binding Icon}"
-                                      Stroke="{StaticResource TextBrush}"/>
-                                <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
             </StackPanel>
         </Grid>
+        <!--Output View-->
         <Grid Grid.Column="1">
-            <StackPanel>
-                <Grid Margin="5,0,5,0" Height="30">
+            <StackPanel Orientation="Vertical">
+                <Grid Margin="5,0,5,0"  Height="30">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" 
-                               Text="Output"
-                               Foreground="{StaticResource TextBrush}"
-                               FontSize="16"
-                               FontWeight="Bold"
-                               Margin="10,0,0,0"
-                               VerticalAlignment="Center"/>
+                   Text="Output" 
+                   Foreground="{StaticResource TextBrush}"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Margin="10,0,0,0"
+                   VerticalAlignment="Center"/>
                     <Button Grid.Column="1" Width="50" Height="25" 
-                            VerticalAlignment="Center"
-                            Content="Add"
-                            Command="{Binding CmdAppend}"
-                            CommandParameter="Output"/>
+                VerticalAlignment="Center"
+                Content="Add"
+                Command="{Binding CmdAppend}"
+                CommandParameter="Output"/>
                     <Button Grid.Column="2" Width="50" Height="25" 
-                            VerticalAlignment="Center"
-                            Content="Remove"
-                            Command="{Binding CmdRemove}"
-                            CommandParameter="Output"/>
+                VerticalAlignment="Center"
+                Content="Remove"
+                Command="{Binding CmdRemove}"
+                CommandParameter="Output"/>
                 </Grid>
-                <ListView ItemsSource="{Binding Model.Output}"  Margin="5,0,5,0">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" Rows="16"/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="1" Orientation="Horizontal">
-                                <Path Style="{StaticResource Icon}"
-                                      Data="{Binding Icon}"
-                                      Stroke="{StaticResource TextBrush}"/>
-                                <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <StackPanel>
+                    <!-- Bit 32개씩 표시 -->
+                    <ListView ItemsSource="{Binding PagedOutputBits}" Margin="5,0">
+                        <i:Interaction.Behaviors>
+                            <behavior:ItemsControlClickBehavior ItemClickCommand="{Binding CmdSelect}" ItemDoubleClickCommand="{Binding CmdToggle}"/>
+                        </i:Interaction.Behaviors>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2" Rows="16"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="1" Orientation="Horizontal">
+                                    <Path Style="{StaticResource Icon}" Data="{Binding Icon}" Stroke="{StaticResource TextBrush}" />
+                                    <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <!-- 페이징 버튼 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0">
+                    <Button Content="◀" Command="{Binding CmdOutputPrevPage}"/>
+                    <TextBlock Text="{Binding OutputPageDisplay}" Margin="10,0"/>
+                    <Button Content="▶" Command="{Binding CmdOutputNextPage}"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>

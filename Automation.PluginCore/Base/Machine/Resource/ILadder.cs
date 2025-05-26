@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Base.Machine.Resource
 {
-    public enum LadderType { None, Contact_A, Contact_B, HorizontalLine, Coil }
+    public enum LadderType { None, Contact_A, Contact_B, HorizontalLine, Coil, Function }
     public interface ILadder : INode
     {
         int X { get; set; }

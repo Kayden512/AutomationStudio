@@ -34,11 +34,13 @@ namespace Automation.PluginCore.Util.Behavior
         protected override void OnAttached()
         {
             base.OnAttached();
+            AssociatedObject.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
             AssociatedObject.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
         }
 
         protected override void OnDetaching()
         {
+            AssociatedObject.PreviewMouseLeftButtonUp -= OnMouseLeftButtonUp;
             AssociatedObject.PreviewMouseLeftButtonDown -= OnMouseLeftButtonDown;
             base.OnDetaching();
         }
@@ -55,11 +57,17 @@ namespace Automation.PluginCore.Util.Behavior
                     if (ItemDoubleClickCommand?.CanExecute(data) == true)
                         ItemDoubleClickCommand.Execute(data);
                 }
-                else if (e.ClickCount == 1)
-                {
-                    if (ItemClickCommand?.CanExecute(data) == true)
-                        ItemClickCommand.Execute(data);
-                }
+            }
+        }
+        private void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var itemContainer = GetItemContainer(e.OriginalSource as DependencyObject);
+            if (itemContainer != null)
+            {
+                var data = itemContainer.DataContext;
+
+                if (ItemClickCommand?.CanExecute(data) == true)
+                    ItemClickCommand.Execute(data);
             }
         }
 

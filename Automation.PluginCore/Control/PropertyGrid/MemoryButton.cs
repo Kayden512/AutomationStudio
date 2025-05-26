@@ -29,7 +29,8 @@ namespace Automation.PluginCore.Control.PropertyGrid
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             Extension.OpenDocument(IOViewMoel);
-            IOViewMoel.RebuildAllBits();
+            IOViewMoel.RebuildAllInputBits();
+            IOViewMoel.RebuildAllOutputBits();
         }
     }
 }

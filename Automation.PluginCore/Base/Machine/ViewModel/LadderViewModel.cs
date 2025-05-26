@@ -139,6 +139,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         }
         public void OnAppend(object param)
         {
+            if (IsRunning) return;
             INode node = GetNode(SelectedY, SelectedX);
             if (node != null && param.ToString() != "down")
             {
@@ -168,6 +169,9 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                     break;
                 case "coil":
                     Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Coil });
+                    break;
+                case "function":
+                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Function });
                     break;
             }
             node = Machine.Logic.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
@@ -252,7 +256,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             }
             foreach (LadderNode node in Machine.Logic)
             {
-                if(node.Type == LadderType.Coil)
+                if(node.Type == LadderType.Coil || node.Type == LadderType.Function)
                 {
                     node.Value = node.Flow;
                 }

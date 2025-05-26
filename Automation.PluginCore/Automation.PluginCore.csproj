@@ -119,6 +119,7 @@
     <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="Control\PropertyGrid\MemoryButton.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderEditor.cs" />
+    <Compile Include="Control\PropertyGrid\ValueHolderOptionEditor.cs" />
     <Compile Include="Control\PropertyGrid\RequestActionEditor.cs" />
     <Compile Include="CustomUI\UIElementBase.cs" />
     <Compile Include="CustomUI\ViewModel\UITextBlock.cs" />

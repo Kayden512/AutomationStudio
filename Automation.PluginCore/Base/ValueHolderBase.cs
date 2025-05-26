@@ -1,29 +1,33 @@
 ﻿using Automation.PluginCore.Interface;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Base
 {
-    public abstract class ValueHolderBase<T> : NodeBase, IValueHolder<T>
+    public abstract class ValueHolderBase : NodeBase, IValueHolder
     {
-        public event EventHandler ValueChanged;
+        public event EventHandler<object> ValueChanged;
 
-        T _value;
-        public T Value
+        object _value;
+        public object Value
         {
             get => _value;
             set
             {
-                if (!EqualityComparer<T>.Default.Equals(_value, value))
+                if (!EqualityComparer<object>.Default.Equals(_value, value))
                 {
                     SetProperty(ref _value, value);
-                    ValueChanged?.Invoke(this, new EventArgs());
+                    ValueChanged?.Invoke(this, value);
                     NotifyPropertyChanged(nameof(Icon));
                 }
             }
         }
+        public virtual ICollection Option => null;
     }
 }

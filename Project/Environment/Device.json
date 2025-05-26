@@ -5,7 +5,7 @@
       {
         "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
         "IsEnabled": true,
-        "Name": "Schedule",
+        "Name": "Read SN",
         "Id": "bef1b619-f900-407d-b40c-14d284c2ffc9",
         "Items": [
           {
@@ -27,24 +27,50 @@
             "Items": []
           }
         ]
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "Product In",
+        "Id": "df570378-02ef-421f-8ccf-1ac697149b48",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
+            "IsEnabled": true,
+            "Name": "WriteBit",
+            "Id": "423637e4-5de0-4051-96a4-0f4cc12255d8",
+            "Items": []
+          }
+        ]
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "IsEnabled": true,
+        "Name": "Align",
+        "Id": "74fc3ca1-72cd-499c-ae67-b77545858e57",
+        "Items": []
       }
     ],
     "Logic": [
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 0,
         "Y": 1,
         "Flow": true,
         "Value": false,
         "VerticalLine": false,
         "Type": 1,
-        "ReferencePath": "009736b2-348f-4d80-b363-d7eaf7977733",
-        "Name": "LadderNode",
+        "ReferencePath": "f7bd382a-4976-4fb6-82f1-d305f222ae2f",
+        "Option": true,
         "Id": "76b4266c-edc3-4975-8828-599ccc7b2ced",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 1,
         "Y": 1,
         "Flow": false,
@@ -52,12 +78,13 @@
         "VerticalLine": false,
         "Type": 3,
         "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "Option": null,
         "Id": "0605cf3a-065a-4472-bdb8-7ddbc2b43fbf",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 2,
         "Y": 1,
         "Flow": false,
@@ -65,12 +92,13 @@
         "VerticalLine": true,
         "Type": 3,
         "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "Option": null,
         "Id": "5cb16492-553a-49e3-b3a9-b86bba2e3634",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 4,
         "Y": 1,
         "Flow": false,
@@ -78,12 +106,13 @@
         "VerticalLine": false,
         "Type": 3,
         "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "Option": null,
         "Id": "47b33c69-ecad-441d-beef-ea3069704451",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 5,
         "Y": 1,
         "Flow": false,
@@ -91,51 +120,41 @@
         "VerticalLine": false,
         "Type": 3,
         "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "Option": null,
         "Id": "cbeba027-e987-4764-8501-b4398744fbac",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "X": 6,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
         "Name": "LadderNode",
-        "Id": "d57e9b8b-10b1-4213-8422-fb16307c582c",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
         "X": 7,
         "Y": 1,
         "Flow": false,
         "Value": false,
         "VerticalLine": false,
         "Type": 4,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "ReferencePath": "f25327e8-770c-4b23-af87-a283ec4d9f25",
+        "Option": true,
         "Id": "b813b6e7-e749-4e69-9a19-6c561533adcb",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 0,
         "Y": 2,
         "Flow": true,
         "Value": false,
         "VerticalLine": false,
         "Type": 1,
-        "ReferencePath": "914bdddf-d214-4cc3-b76e-986ca4a7a9ee",
-        "Name": "LadderNode",
+        "ReferencePath": "f25327e8-770c-4b23-af87-a283ec4d9f25",
+        "Option": true,
         "Id": "01645a11-f241-4e0f-af21-6178a54cafde",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 1,
         "Y": 2,
         "Flow": false,
@@ -143,21 +162,78 @@
         "VerticalLine": false,
         "Type": 3,
         "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Name": "LadderNode",
+        "Option": null,
         "Id": "b34d451b-64b1-4d80-9d78-13d8ef2c9d7b",
         "Items": []
       },
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
         "X": 3,
         "Y": 1,
         "Flow": false,
         "Value": false,
         "VerticalLine": false,
         "Type": 2,
-        "ReferencePath": "f5facea8-9c09-4478-99dd-61333b32c491",
-        "Name": "LadderNode",
+        "ReferencePath": "80e48d18-817f-4ee2-b046-d9e98c030006",
+        "Option": true,
         "Id": "25981cd1-c127-481b-9295-773344a30de4",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
+        "X": 0,
+        "Y": 3,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 0,
+        "ReferencePath": "00000000-0000-0000-0000-000000000000",
+        "Option": null,
+        "Id": "a32f009c-42c9-4ed2-93ba-695a600cd64a",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
+        "X": 6,
+        "Y": 2,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 0,
+        "ReferencePath": "00000000-0000-0000-0000-000000000000",
+        "Option": null,
+        "Id": "c691b4e3-6a8c-4d03-b4df-9b7ecc2846b5",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
+        "X": 7,
+        "Y": 2,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 0,
+        "ReferencePath": "00000000-0000-0000-0000-000000000000",
+        "Option": null,
+        "Id": "dac7bd6b-6f89-411f-a8b0-9885c3c23526",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
+        "Name": "LadderNode",
+        "X": 6,
+        "Y": 1,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Type": 3,
+        "ReferencePath": "00000000-0000-0000-0000-000000000000",
+        "Option": null,
+        "Id": "ce7d4449-e3b9-426c-b908-16033a79a326",
         "Items": []
       }
     ],
@@ -172,125 +248,470 @@
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Memory, Automation.PluginCore",
         "MemotyLength": 16,
-        "Name": "Memory",
-        "Id": "e157a3f7-2fb2-4924-b8a6-c000f50814ba",
+        "Name": "Input",
+        "Id": "254288a6-e43f-4c69-b638-bc7da9b27d70",
         "Items": [
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
-            "Name": "Product In",
-            "Id": "009736b2-348f-4d80-b363-d7eaf7977733",
+            "Name": "Input A",
+            "Id": "f7bd382a-4976-4fb6-82f1-d305f222ae2f",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
-            "Name": "Door Lock",
-            "Id": "914bdddf-d214-4cc3-b76e-986ca4a7a9ee",
+            "Name": "Input B",
+            "Id": "e8ffb0df-46f6-4dde-aa6f-b665a33742c0",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Test",
+            "Id": "c173427e-70cb-4ad4-a05b-4669b6ed556b",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Emergency",
-            "Id": "f5facea8-9c09-4478-99dd-61333b32c491",
+            "Id": "80e48d18-817f-4ee2-b046-d9e98c030006",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
-            "Value": false,
-            "Name": "UserInput",
-            "Id": "fc58a704-bc9f-46ba-bbc0-b957eb3a3d6e",
-            "Items": []
-          },
-          {
-            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
-            "Value": false,
-            "Name": "Bit",
-            "Id": "19d788d8-cc6b-41f7-833c-8cd776640261",
-            "Items": []
-          },
-          {
-            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "a38ea12c-191e-4d14-92f4-68c5130eb5f7",
+            "Id": "9389aa46-d270-485c-b6b3-d067be505ec6",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "f78363db-1db4-4a66-8921-6100935bd12b",
+            "Id": "105a7c96-8c88-4432-b799-a7c4a07ae909",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "7ffa5c3f-cee7-41f9-afe2-48c03b41ba7d",
+            "Id": "ccb97d92-6612-48fd-b1ab-3d58f9cc05ba",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "aa4ef34f-653e-491a-bf73-508f58a5d52b",
+            "Id": "b29f1032-69ba-4772-8466-ae0bd0595b13",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "8da47b0e-f496-4001-9c3e-1809429384f4",
+            "Id": "d9a4f5dc-2ca7-499b-adba-6d2e886e2f69",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "325c82b0-648a-4c98-9b40-4f3449036676",
+            "Id": "7cacaba3-09c6-49ac-b32e-6aa96e26e3ea",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "6fe96af9-4570-499f-a1f0-7dc46a207ecd",
+            "Id": "30ad0a16-2a6b-4af9-aa05-e82fda9b425d",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "485db742-772b-4b8d-9a65-cc232d3095ac",
+            "Id": "b0394c17-0d75-4d94-9c83-96ac1dc0a49c",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "853bd5d1-8570-42c9-a34f-2c2aae03dffb",
+            "Id": "9eae61db-83a2-443c-b0b3-b21987162c6c",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "c66e1612-6d6b-4710-ba8f-9dab1704ed8c",
+            "Id": "b3930454-6643-43f9-9b80-c9d1faa16bd2",
             "Items": []
           },
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
             "Value": false,
             "Name": "Bit",
-            "Id": "26bf1e77-8400-466c-b47e-06685f7b50c1",
+            "Id": "04e858c2-eca0-4cb8-9b6f-69ea9a03bbb1",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "83c36aaf-fe21-4018-ba09-55e43641c597",
             "Items": []
           }
         ]
       }
     ],
-    "Output": [],
+    "Output": [
+      {
+        "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Memory, Automation.PluginCore",
+        "MemotyLength": 16,
+        "Name": "Output",
+        "Id": "79bb541c-7c3c-4ed3-98c3-28a48fbe91e1",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Out1",
+            "Id": "f25327e8-770c-4b23-af87-a283ec4d9f25",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Out2",
+            "Id": "2d2ca705-6a5f-4c72-b404-ac4f78f9f5b4",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "4f26275d-fdbd-4d68-b6d1-52b30fb36436",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "1b93db5d-8f91-4187-9873-148b0002a37a",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "08e058af-cff9-433f-bc7b-e5567be2664e",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "a1a2168f-18bc-4a94-ad44-0baa1a2c7172",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "698171f4-5cf3-4e1c-8f66-f7703a7bff3e",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "d8cfaac4-fe56-4559-b1c1-c73a577d7745",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "29b52fe1-bf42-4509-a6c7-af2bc55ff4fc",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "90ced61a-8061-498e-a7e2-ad47c9c18e9d",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "27a813d5-a15a-480a-a537-363a0499f0f4",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "93aea7a8-56f4-4187-a577-479a9b502279",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "3b2faefd-f233-4a03-b55d-15a9eea59c56",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "072f03ef-3b96-49f6-a560-7525b4b793e3",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "35113553-1769-4917-81bc-48afb2ef352b",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "Value": false,
+            "Name": "Bit",
+            "Id": "5efd59a3-6ea9-4ff9-9429-10dd7bb369d3",
+            "Items": []
+          }
+        ]
+      }
+    ],
     "Actions": [
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Action.ReadBit, Automation.PluginCore",

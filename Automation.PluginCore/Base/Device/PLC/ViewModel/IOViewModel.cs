@@ -16,29 +16,30 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
     public class IOViewModel : DocumentBase
     {
         public override Type ViewType => typeof(IOView);
+        public int PageSize => 32;
 
-        private int _currentPage;
-        public int CurrentPage
+        #region Input
+        private int _currentInputPage;
+        public int CurrentInputPage
         {
-            get => _currentPage;
+            get => _currentInputPage;
             set
             {
-                SetProperty(ref _currentPage, value);
-                UpdatePagedBits();
-                NotifyPropertyChanged(nameof(TotalPages));
-                NotifyPropertyChanged(nameof(PageDisplay));
+                SetProperty(ref _currentInputPage, value);
+                UpdateInputPagedBits();
+                NotifyPropertyChanged(nameof(TotalInputPages));
+                NotifyPropertyChanged(nameof(InputPageDisplay));
             }
         }
 
-        public int TotalPages => (int)Math.Ceiling((double)AllInputBits.Count / PageSize);
-        public string PageDisplay => $"{CurrentPage + 1} / {TotalPages}";
+        public int TotalInputPages => (int)Math.Ceiling((double)AllInputBits.Count / PageSize);
+        public string InputPageDisplay => $"{CurrentInputPage + 1} / {TotalInputPages}";
 
         public NodeCollection AllInputBits { get; } = new NodeCollection();
 
         public NodeCollection PagedInputBits { get; } = new NodeCollection();
-        public int PageSize => 32;
 
-        public void RebuildAllBits()
+        public void RebuildAllInputBits()
         {
             AllInputBits.Clear();
             foreach (var memory in (Model as VirtualDevice).Input)
@@ -46,47 +47,114 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
                 foreach (var bit in memory.Items)
                     AllInputBits.Add(bit);
             }
-            CurrentPage = 0;
-            UpdatePagedBits();
-            NotifyPropertyChanged(nameof(TotalPages));
-            NotifyPropertyChanged(nameof(PageDisplay));
+            CurrentInputPage = 0;
+            UpdateInputPagedBits();
+            NotifyPropertyChanged(nameof(TotalInputPages));
+            NotifyPropertyChanged(nameof(InputPageDisplay));
         }
 
-        public void NextPage()
+        public void NextInputPage()
         {
             int maxPages = (int)Math.Ceiling((double)AllInputBits.Count / PageSize);
-            if (CurrentPage < maxPages - 1)
+            if (CurrentInputPage < maxPages - 1)
             {
-                CurrentPage++;
+                CurrentInputPage++;
             }
         }
 
-        public void PreviousPage()
+        public void PreviousInputPage()
         {
-            if (CurrentPage > 0)
+            if (CurrentInputPage > 0)
             {
-                CurrentPage--;
+                CurrentInputPage--;
             }
         }
 
-        private void UpdatePagedBits()
+        private void UpdateInputPagedBits()
         {
             PagedInputBits.Clear();
-            var pageBits = AllInputBits.Skip(CurrentPage * PageSize).Take(PageSize);
+            var pageBits = AllInputBits.Skip(CurrentInputPage * PageSize).Take(PageSize);
             foreach (var bit in pageBits)
                 PagedInputBits.Add(bit);
         }
 
+
+        private int _currentOutputPage;
+        public int CurrentOutputPage
+        {
+            get => _currentOutputPage;
+            set
+            {
+                SetProperty(ref _currentOutputPage, value);
+                UpdateOutputPagedBits();
+                NotifyPropertyChanged(nameof(TotalOutputPages));
+                NotifyPropertyChanged(nameof(OutputPageDisplay));
+            }
+        }
+#endregion
+
+        #region Output
+        public int TotalOutputPages => (int)Math.Ceiling((double)AllOutputBits.Count / PageSize);
+        public string OutputPageDisplay => $"{CurrentOutputPage + 1} / {TotalOutputPages}";
+
+        public NodeCollection AllOutputBits { get; } = new NodeCollection();
+
+        public NodeCollection PagedOutputBits { get; } = new NodeCollection();
+
+        public void RebuildAllOutputBits()
+        {
+            AllOutputBits.Clear();
+            foreach (var memory in (Model as VirtualDevice).Output)
+            {
+                foreach (var bit in memory.Items)
+                    AllOutputBits.Add(bit);
+            }
+            CurrentOutputPage = 0;
+            UpdateOutputPagedBits();
+            NotifyPropertyChanged(nameof(TotalOutputPages));
+            NotifyPropertyChanged(nameof(OutputPageDisplay));
+        }
+
+        public void NextOutputPage()
+        {
+            int maxPages = (int)Math.Ceiling((double)AllOutputBits.Count / PageSize);
+            if (CurrentOutputPage < maxPages - 1)
+            {
+                CurrentOutputPage++;
+            }
+        }
+
+        public void PreviousOutputPage()
+        {
+            if (CurrentOutputPage > 0)
+            {
+                CurrentOutputPage--;
+            }
+        }
+
+        private void UpdateOutputPagedBits()
+        {
+            PagedOutputBits.Clear();
+            var pageBits = AllOutputBits.Skip(CurrentOutputPage * PageSize).Take(PageSize);
+            foreach (var bit in pageBits)
+                PagedOutputBits.Add(bit);
+        }
+
+#endregion
+
         public ICommand CmdToggle => new RelayCommand<object>(OnToggle);
         public ICommand CmdAppend => new RelayCommand<object>(OnAppend);
         public ICommand CmdRemove => new RelayCommand<object>(OnRemove);
-        public ICommand CmdInputPrevPage => new RelayCommand(PreviousPage);
-        public ICommand CmdInputNextPage => new RelayCommand(NextPage);
+        public ICommand CmdInputPrevPage => new RelayCommand(PreviousInputPage);
+        public ICommand CmdInputNextPage => new RelayCommand(NextInputPage);
+        public ICommand CmdOutputPrevPage => new RelayCommand(PreviousOutputPage);
+        public ICommand CmdOutputNextPage => new RelayCommand(NextOutputPage);
+
         public void OnToggle(object param)
         {
             if (param == null) return;
-            if (param is IValueHolder<bool> node)
-                node.Value = !node.Value;
+            if (param is IValueHolder node)
+                node.Value = !(bool)node.Value;
         }
 
         public override void OnSelect(object param)
@@ -99,6 +167,8 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
         public void OnAppend(object param)
         {
             Memory newMemory = new Memory();
+            newMemory.Name = param.ToString();
+
             Extension.Register(newMemory);
             for (int i = 0; i<newMemory.MemotyLength; i++)
             {
@@ -108,11 +178,16 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
             }
 
             if (param.ToString() == "Input")
+            {
                 (Model as VirtualDevice).Input.Add(newMemory);
+                RebuildAllInputBits();
+            }
             else
+            {
                 (Model as VirtualDevice).Output.Add(newMemory);
+                RebuildAllOutputBits();
+            }
 
-            RebuildAllBits();
         }
         public void OnRemove(object param)
         {
