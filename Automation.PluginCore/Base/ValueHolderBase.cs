@@ -12,9 +12,12 @@ namespace Automation.PluginCore.Base
 {
     public abstract class ValueHolderBase : NodeBase, IValueHolder
     {
+        object _value;
+
         public event EventHandler<object> ValueChanged;
 
-        object _value;
+        [Browsable(false)]
+        public virtual AccessMode AccessMode { get; set; } = AccessMode.ReadWrite;
         public object Value
         {
             get => _value;
@@ -29,5 +32,6 @@ namespace Automation.PluginCore.Base
             }
         }
         public virtual ICollection Option => null;
+
     }
 }

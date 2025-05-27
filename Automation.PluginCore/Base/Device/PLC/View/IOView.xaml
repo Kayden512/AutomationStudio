@@ -53,7 +53,8 @@
                             <DataTemplate>
                                 <StackPanel Margin="1" Orientation="Horizontal">
                                     <Path Style="{StaticResource Icon}" Data="{Binding Icon}" Stroke="{StaticResource TextBrush}" />
-                                    <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                                    <TextBlock Text="{Binding DisplayAddress}" Margin="3,0,0,0"/>
+                                    <TextBlock Text="{Binding Name}" Margin="3,0,0,0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -109,7 +110,8 @@
                             <DataTemplate>
                                 <StackPanel Margin="1" Orientation="Horizontal">
                                     <Path Style="{StaticResource Icon}" Data="{Binding Icon}" Stroke="{StaticResource TextBrush}" />
-                                    <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                                    <TextBlock Text="{Binding DisplayAddress}" Margin="3,0,0,0"/>
+                                    <TextBlock Text="{Binding Name}" Margin="3,0,0,0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

@@ -104,10 +104,15 @@
     <Compile Include="Base\Device\PLC\VirtualDevice.cs" />
     <Compile Include="Base\DocumentBase.cs" />
     <Compile Include="Base\Machine\Action\Request.cs" />
+    <Compile Include="Base\Machine\Resource\Coil.cs" />
+    <Compile Include="Base\Machine\Resource\Contact.cs" />
+    <Compile Include="Base\Machine\Resource\EmptyLadder.cs" />
+    <Compile Include="Base\Machine\Resource\Function.cs" />
     <Compile Include="Base\Machine\Resource\ILadder.cs" />
     <Compile Include="Base\Machine\Resource\LadderNodeBase.cs" />
     <Compile Include="Base\Machine\Action\Schedule.cs" />
     <Compile Include="Base\Machine\Machine.cs" />
+    <Compile Include="Base\Machine\Resource\HorizontalLine.cs" />
     <Compile Include="Base\Machine\ViewModel\LadderViewModel.cs" />
     <Compile Include="Base\Machine\View\LadderView.xaml.cs">
       <DependentUpon>LadderView.xaml</DependentUpon>
@@ -118,6 +123,8 @@
     <Compile Include="Base\ValueHolderBase.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="Control\PropertyGrid\MemoryButton.cs" />
+    <Compile Include="Control\PropertyGrid\WriteOnlyValueHolderEditor.cs" />
+    <Compile Include="Control\PropertyGrid\ReadOnlyValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderOptionEditor.cs" />
     <Compile Include="Control\PropertyGrid\RequestActionEditor.cs" />

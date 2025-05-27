@@ -178,8 +178,8 @@
                                             </Style>
                                         </Path.Style>
                                     </Path>
-                                    <Path Stroke="{StaticResource TextBrush}" StrokeThickness="2">
-                                        <Path.Style>
+                                    <Path Data="{Binding Icon}" Stroke="{StaticResource TextBrush}" StrokeThickness="2">
+                                        <!--<Path.Style>
                                             <Style TargetType="Path">
 
                                                 <Setter Property="Data" Value=""/>
@@ -210,7 +210,7 @@
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
-                                        </Path.Style>
+                                        </Path.Style>-->
                                     </Path>
                                     <Path Stroke="{StaticResource TextBrush}" Data="M 0,10 L 0,50" StrokeThickness="2">
                                         <Path.Style>

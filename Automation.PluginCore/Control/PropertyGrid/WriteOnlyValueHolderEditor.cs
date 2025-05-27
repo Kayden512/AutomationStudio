@@ -20,24 +20,26 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace Automation.PluginCore.Control.PropertyGrid
 {
-    public class ValueHolderOptionEditor : ViewModelBase, ITypeEditor
+    public class WriteOnlyValueHolderEditor : ViewModelBase, ITypeEditor
     {
         PropertyItem Item { get; set; }
         public FrameworkElement ResolveEditor(PropertyItem propertyItem)
         {
             this.Item = propertyItem;
-            ComboBox combo = new ComboBox();
 
+            ComboBox combo = new ComboBox();
             combo.DataContext = this;
-            IValueHolder valueHolder = (Item.Instance as IReferenceHolder).Reference;
-            combo.ItemsSource = null;
-            if (valueHolder != null )
-                combo.ItemsSource = valueHolder.Option;
+
+            List<INode> nodes = Extension.GetNodes(new Type[] { typeof(IValueHolder) });
+            nodes = nodes.FindAll(x => (x as IValueHolder).AccessMode == AccessMode.Write);
+            List<string> paths = nodes.Select(a => a.Path).ToList();
+            combo.ItemsSource = paths;
 
             var binding = new Binding(Item.PropertyName)
             {
                 Source = Item.Instance,
                 Mode = BindingMode.TwoWay,
+                Converter = new PathToGuidConverter()
             };
             combo.SetBinding(ComboBox.SelectedItemProperty, binding);
 
@@ -50,6 +52,12 @@ namespace Automation.PluginCore.Control.PropertyGrid
                 behaviors.Add(behavior);
             }
             return combo;
+        }
+
+        public override void OnDrop(DropData drop)
+        {
+            if (drop.Source is IAction action)
+                Item.Value = action.Id;
         }
     }
 }

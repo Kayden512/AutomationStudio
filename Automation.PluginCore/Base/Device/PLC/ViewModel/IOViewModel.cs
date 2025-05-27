@@ -173,6 +173,10 @@ namespace Automation.PluginCore.Base.Device.PLC.ViewModel
             for (int i = 0; i<newMemory.MemotyLength; i++)
             {
                 Bit newBit = new Bit();
+                if(param.ToString() == "Input")
+                    newBit.AccessMode = AccessMode.Read;
+                else
+                    newBit.AccessMode = AccessMode.Write;
                 Extension.Register(newBit);
                 newMemory.AddChild(newBit);
             }

@@ -76,15 +76,15 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             {
                 IsRunning = true;
 
-                List<LadderNode> toRemove = new List<LadderNode>();
+                List<ILadder> toRemove = new List<ILadder>();
 
-                foreach (LadderNode node in this.Items)
+                foreach (ILadder node in this.Items)
                 {
-                    if (node.Type == LadderType.None && node.VerticalLine == false)
+                    if (node is EmptyLadder && node.VerticalLine == false)
                         toRemove.Add(node);
                 }
                 // 이후에 제거
-                foreach (LadderNode node in toRemove)
+                foreach (ILadder node in toRemove)
                 {
                     node.RemoveFromParent();
                 }
@@ -140,7 +140,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         public void OnAppend(object param)
         {
             if (IsRunning) return;
-            INode node = GetNode(SelectedY, SelectedX);
+            ILadder node = GetNode(SelectedY, SelectedX);
             if (node != null && param.ToString() != "down")
             {
                 node.RemoveFromParent();
@@ -148,43 +148,42 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             switch (param.ToString())
             {
                 case "empty":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None });
+                    //Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None });
                     break;
                 case "contact_a":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY , Type = LadderType.Contact_A});
+                    Machine.Logic.Add(new Contact() { X = SelectedX, Y = SelectedY, Type = ContactType.A });
                     break;
                 case "contact_b":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Contact_B });
+                    Machine.Logic.Add(new Contact() { X = SelectedX, Y = SelectedY, Type = ContactType.B });
                     break;
                 case "line":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.HorizontalLine });
+                    Machine.Logic.Add(new HorizontalLine() { X = SelectedX, Y = SelectedY });
                     break;
                 case "down":
                     if(node == null)
                     {
-                        node = new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.None };
+                        node = new EmptyLadder() { X = SelectedX, Y = SelectedY };
                         Machine.Logic.Add(node);
                     }
-                    (node as LadderNode).VerticalLine = !(node as LadderNode).VerticalLine;
+                    node.VerticalLine = !node.VerticalLine;
                     break;
                 case "coil":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Coil });
+                    Machine.Logic.Add(new Coil() { X = SelectedX, Y = SelectedY });
                     break;
                 case "function":
-                    Machine.Logic.Add(new LadderNode() { X = SelectedX, Y = SelectedY, Type = LadderType.Function });
+                    Machine.Logic.Add(new Function() { X = SelectedX, Y = SelectedY });
                     break;
             }
-            node = Machine.Logic.ToList().Find(x => (x as LadderNode).X == SelectedX && (x as LadderNode).Y == SelectedY);
+            node = GetNode(SelectedY, SelectedX);
             if (node != null)
                 SelectedNode = node;
         }
         
-        public LadderNode GetNode(int row, int column)
+        public ILadder GetNode(int row, int column)
         {
-            INode node = Machine.Logic.ToList().Find(x => (x as LadderNode).X == column && (x as LadderNode).Y == row);
-
+            INode node = Machine.Logic.ToList().Find(x => (x as ILadder).X == column && (x as ILadder).Y == row);
             if(node != null) 
-                return node as LadderNode;
+                return node as ILadder;
 
             return null;
         }
@@ -201,7 +200,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                     currentFlow = false;
                     continue;
                 }
-                if (node.Type == LadderType.None && node.VerticalLine == false) return;
+                if (node is EmptyLadder && node.VerticalLine == false) return;
 
                 if (startColumn != 0 && column == startColumn)
                 {
@@ -228,14 +227,16 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
                         ComputeRow(row - 1, column, currentFlow);
                     }
                 }
-                switch (node.Type)
+                if(node is Contact contact)
                 {
-                    case LadderType.Contact_A:
+                    if (contact.Type == ContactType.A)//A
+                    {
                         currentFlow = currentFlow && node.Value;  // Normally Open
-                        break;
-                    case LadderType.Contact_B:
+                    }
+                    else if (contact.Type == ContactType.B)//B
+                    {
                         currentFlow = currentFlow && !node.Value; // Normally Closed
-                        break;
+                    }
                 }
                 var upperNextNode = GetNode(row - 1, column + 1);
                 if(upperNextNode != null && upperNextNode.VerticalLine == true)
@@ -246,7 +247,7 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
         }
         public void Compute()
         {
-            foreach(LadderNode node in Machine.Logic)
+            foreach(ILadder node in Machine.Logic)
             {
                 node.Flow = false;
             }
@@ -254,12 +255,10 @@ namespace Automation.PluginCore.Base.Machine.ViewModel
             {
                 ComputeRow(row, 0, true);
             }
-            foreach (LadderNode node in Machine.Logic)
+            foreach (ILadder node in Machine.Logic)
             {
-                if(node.Type == LadderType.Coil || node.Type == LadderType.Function)
-                {
+                if(node is Coil || node is Function)
                     node.Value = node.Flow;
-                }
             }
         }
     }

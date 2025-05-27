@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 
 namespace Automation.PluginCore.Interface
 {
-    //public interface IValueHolder<T> : INode, IValueHolder
-    //{
-    //    T Value { get; set; }
-    //}
-
+    [Flags]
+    public enum AccessMode
+    {
+        Read = 1,
+        Write = 2,
+        ReadWrite = Read | Write
+    }
     public interface IValueHolder
     {
         event EventHandler<object> ValueChanged;
 
+        AccessMode AccessMode { get; set; }
         ICollection Option { get; }
 
         object Value { get; set; }

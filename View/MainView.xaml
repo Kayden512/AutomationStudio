@@ -62,7 +62,7 @@
             <dock:DockingManager.LayoutItemContainerStyleSelector>
                 <util:PaneStyleSelector>
                     <util:PaneStyleSelector.Document>
-                        <Style TargetType="{x:Type dock:LayoutDocumentItem}">
+                        <Style TargetType="{x:Type dock:LayoutItem}">
                             <Setter Property="Title" Value="{Binding Model.Name}"/>
                             <Setter Property="ContentId" Value="{Binding Model.Name}"/>
                             <Setter Property="CanClose" Value="{Binding Model.CanClose}"/>

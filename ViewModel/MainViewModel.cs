@@ -75,7 +75,6 @@ namespace AutomationStudio.ViewModel
             if (DockingManager == null || !File.Exists("Layout.xml")) return;
 
             var serializer = new XmlLayoutSerializer(DockingManager);
-            serializer.LayoutSerializationCallback += (s, e) =>{ };
             serializer.Deserialize("Layout.xml");
         }
         public void OnHelp()

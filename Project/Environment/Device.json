@@ -55,185 +55,113 @@
     ],
     "Logic": [
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 0,
-        "Y": 1,
-        "Flow": true,
+        "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
+        "Type": 0,
         "Value": false,
-        "VerticalLine": false,
-        "Type": 1,
-        "ReferencePath": "f7bd382a-4976-4fb6-82f1-d305f222ae2f",
+        "ReferencePath": "9fabb7f7-594f-4537-9405-480e14c11cf3",
         "Option": true,
-        "Id": "76b4266c-edc3-4975-8828-599ccc7b2ced",
+        "Name": "Contact",
+        "X": 0,
+        "Y": 0,
+        "Flow": true,
+        "VerticalLine": false,
+        "Id": "93b38141-5ee9-479e-ae7f-b556866792f5",
         "Items": []
       },
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 1,
-        "Y": 1,
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
+        "X": 3,
+        "Y": 0,
         "Flow": false,
         "Value": false,
         "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "0605cf3a-065a-4472-bdb8-7ddbc2b43fbf",
+        "Id": "0ef3e755-f17e-4265-b49d-375fa036cf39",
         "Items": []
       },
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 2,
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
+        "X": 4,
+        "Y": 0,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Id": "3075cbda-8059-47dc-a749-7e02288d07f6",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
+        "X": 5,
+        "Y": 0,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Id": "404c8409-6971-4845-a07d-92d3d0ce133e",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
+        "X": 6,
+        "Y": 0,
+        "Flow": false,
+        "Value": false,
+        "VerticalLine": false,
+        "Id": "3522a011-b57e-4259-98d0-74b0c60f6a3f",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.Coil, Automation.PluginCore",
+        "Value": false,
+        "ReferencePath": "1fdc8a6b-bb73-410a-9855-274c3da04a17",
+        "Option": true,
+        "Name": "Coil",
+        "X": 7,
+        "Y": 0,
+        "Flow": false,
+        "VerticalLine": false,
+        "Id": "5849f308-a49d-4705-88d4-5b4f1fd9b80b",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
+        "Type": 0,
+        "Value": false,
+        "ReferencePath": "1fdc8a6b-bb73-410a-9855-274c3da04a17",
+        "Option": true,
+        "Name": "Contact",
+        "X": 0,
         "Y": 1,
+        "Flow": true,
+        "VerticalLine": false,
+        "Id": "c0f46a04-4853-4c66-b28a-247ed1f9cc88",
+        "Items": []
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
+        "X": 1,
+        "Y": 0,
         "Flow": false,
         "Value": false,
         "VerticalLine": true,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "5cb16492-553a-49e3-b3a9-b86bba2e3634",
+        "Id": "1aee7876-8238-4049-b498-3c72ceb3ec80",
         "Items": []
       },
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 4,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "47b33c69-ecad-441d-beef-ea3069704451",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 5,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "cbeba027-e987-4764-8501-b4398744fbac",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 7,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 4,
-        "ReferencePath": "f25327e8-770c-4b23-af87-a283ec4d9f25",
-        "Option": true,
-        "Id": "b813b6e7-e749-4e69-9a19-6c561533adcb",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 0,
-        "Y": 2,
-        "Flow": true,
-        "Value": false,
-        "VerticalLine": false,
+        "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
         "Type": 1,
-        "ReferencePath": "f25327e8-770c-4b23-af87-a283ec4d9f25",
+        "Value": false,
+        "ReferencePath": "3da31507-f33f-44e0-af03-1b87832ea4ee",
         "Option": true,
-        "Id": "01645a11-f241-4e0f-af21-6178a54cafde",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 1,
-        "Y": 2,
+        "Name": "Contact",
+        "X": 2,
+        "Y": 0,
         "Flow": false,
-        "Value": false,
         "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "b34d451b-64b1-4d80-9d78-13d8ef2c9d7b",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 3,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 2,
-        "ReferencePath": "80e48d18-817f-4ee2-b046-d9e98c030006",
-        "Option": true,
-        "Id": "25981cd1-c127-481b-9295-773344a30de4",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 0,
-        "Y": 3,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 0,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "a32f009c-42c9-4ed2-93ba-695a600cd64a",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 6,
-        "Y": 2,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 0,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "c691b4e3-6a8c-4d03-b4df-9b7ecc2846b5",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 7,
-        "Y": 2,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 0,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "dac7bd6b-6f89-411f-a8b0-9885c3c23526",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.LadderNode, Automation.PluginCore",
-        "Name": "LadderNode",
-        "X": 6,
-        "Y": 1,
-        "Flow": false,
-        "Value": false,
-        "VerticalLine": false,
-        "Type": 3,
-        "ReferencePath": "00000000-0000-0000-0000-000000000000",
-        "Option": null,
-        "Id": "ce7d4449-e3b9-426c-b908-16033a79a326",
+        "Id": "630b44fc-d44b-4630-84f8-7f603acfc06e",
         "Items": []
       }
     ],
@@ -248,8 +176,9 @@
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Memory, Automation.PluginCore",
         "MemotyLength": 16,
+        "Address": null,
         "Name": "Input",
-        "Id": "254288a6-e43f-4c69-b638-bc7da9b27d70",
+        "Id": "09228f84-6fd6-4860-854e-275bb54e09eb",
         "Items": [
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
@@ -260,9 +189,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
-            "Name": "Input A",
-            "Id": "f7bd382a-4976-4fb6-82f1-d305f222ae2f",
+            "Name": "Input 1",
+            "Id": "9fabb7f7-594f-4537-9405-480e14c11cf3",
             "Items": []
           },
           {
@@ -274,9 +204,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
-            "Name": "Input B",
-            "Id": "e8ffb0df-46f6-4dde-aa6f-b665a33742c0",
+            "Name": "Input 2",
+            "Id": "23a70036-2a52-4830-9436-9eb36782e15f",
             "Items": []
           },
           {
@@ -288,23 +219,10 @@
                 false
               ]
             },
-            "Value": false,
-            "Name": "Test",
-            "Id": "c173427e-70cb-4ad4-a05b-4669b6ed556b",
-            "Items": []
-          },
-          {
-            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
-            "Option": {
-              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
-              "$values": [
-                true,
-                false
-              ]
-            },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Emergency",
-            "Id": "80e48d18-817f-4ee2-b046-d9e98c030006",
+            "Id": "3da31507-f33f-44e0-af03-1b87832ea4ee",
             "Items": []
           },
           {
@@ -316,9 +234,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "9389aa46-d270-485c-b6b3-d067be505ec6",
+            "Id": "2fca4a85-d1fe-455d-b95c-85a97c078ecd",
             "Items": []
           },
           {
@@ -330,9 +249,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "105a7c96-8c88-4432-b799-a7c4a07ae909",
+            "Id": "9948ec7d-c9d1-4bec-91d1-4bc6207b2ecd",
             "Items": []
           },
           {
@@ -344,9 +264,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "ccb97d92-6612-48fd-b1ab-3d58f9cc05ba",
+            "Id": "175e1232-2539-46a2-aa70-54d74dba0ea6",
             "Items": []
           },
           {
@@ -358,9 +279,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "b29f1032-69ba-4772-8466-ae0bd0595b13",
+            "Id": "a96813ca-9b8b-439a-9650-ffa0071e0832",
             "Items": []
           },
           {
@@ -372,9 +294,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "d9a4f5dc-2ca7-499b-adba-6d2e886e2f69",
+            "Id": "69d9e37d-ad12-428b-b8a8-fff1449a3f8b",
             "Items": []
           },
           {
@@ -386,9 +309,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "7cacaba3-09c6-49ac-b32e-6aa96e26e3ea",
+            "Id": "c2d1030c-241c-4b05-bba3-e022f65f1705",
             "Items": []
           },
           {
@@ -400,9 +324,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "30ad0a16-2a6b-4af9-aa05-e82fda9b425d",
+            "Id": "2a91ba35-7df8-4c1c-9eb2-535df790c5a7",
             "Items": []
           },
           {
@@ -414,9 +339,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "b0394c17-0d75-4d94-9c83-96ac1dc0a49c",
+            "Id": "f9087aae-602a-4a17-aba9-606c4a0d8e0d",
             "Items": []
           },
           {
@@ -428,9 +354,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "9eae61db-83a2-443c-b0b3-b21987162c6c",
+            "Id": "9967759d-93a3-45c9-b930-324bd1d76cef",
             "Items": []
           },
           {
@@ -442,9 +369,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "b3930454-6643-43f9-9b80-c9d1faa16bd2",
+            "Id": "103b2da7-c1a8-4230-9a3b-2020d4051be6",
             "Items": []
           },
           {
@@ -456,9 +384,10 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "04e858c2-eca0-4cb8-9b6f-69ea9a03bbb1",
+            "Id": "826157fa-5ed3-4505-aa65-9a7aae74e2ed",
             "Items": []
           },
           {
@@ -470,9 +399,25 @@
                 false
               ]
             },
+            "AccessMode": 1,
             "Value": false,
             "Name": "Bit",
-            "Id": "83c36aaf-fe21-4018-ba09-55e43641c597",
+            "Id": "241a2771-c2f8-4b4d-b014-83c8991dabbd",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
+            "Option": {
+              "$type": "System.Collections.Generic.List`1[[System.Boolean, mscorlib]], mscorlib",
+              "$values": [
+                true,
+                false
+              ]
+            },
+            "AccessMode": 1,
+            "Value": false,
+            "Name": "Bit",
+            "Id": "1aef0526-09f7-4b13-9b34-ff1865ffc931",
             "Items": []
           }
         ]
@@ -482,8 +427,9 @@
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Memory, Automation.PluginCore",
         "MemotyLength": 16,
+        "Address": null,
         "Name": "Output",
-        "Id": "79bb541c-7c3c-4ed3-98c3-28a48fbe91e1",
+        "Id": "2b44fbaf-ac65-4fa2-9003-883fcda25cfc",
         "Items": [
           {
             "$type": "Automation.PluginCore.Base.Device.PLC.Resource.Bit, Automation.PluginCore",
@@ -494,9 +440,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
-            "Name": "Out1",
-            "Id": "f25327e8-770c-4b23-af87-a283ec4d9f25",
+            "Name": "Out 1",
+            "Id": "1fdc8a6b-bb73-410a-9855-274c3da04a17",
             "Items": []
           },
           {
@@ -508,9 +455,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
-            "Name": "Out2",
-            "Id": "2d2ca705-6a5f-4c72-b404-ac4f78f9f5b4",
+            "Name": "Out 2",
+            "Id": "6febcc31-e2d5-4d9f-b644-6e2f3894594b",
             "Items": []
           },
           {
@@ -522,9 +470,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "4f26275d-fdbd-4d68-b6d1-52b30fb36436",
+            "Id": "b01a5d04-b900-48ea-8099-989789b48126",
             "Items": []
           },
           {
@@ -536,9 +485,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "1b93db5d-8f91-4187-9873-148b0002a37a",
+            "Id": "74bb7620-f632-488c-94d4-f0e5fbd218ac",
             "Items": []
           },
           {
@@ -550,9 +500,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "08e058af-cff9-433f-bc7b-e5567be2664e",
+            "Id": "eaecd279-3d32-43c2-88ea-c10282799a7e",
             "Items": []
           },
           {
@@ -564,9 +515,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "a1a2168f-18bc-4a94-ad44-0baa1a2c7172",
+            "Id": "63fd03e4-ac0e-4bec-80ac-f1ccbb8016d9",
             "Items": []
           },
           {
@@ -578,9 +530,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "698171f4-5cf3-4e1c-8f66-f7703a7bff3e",
+            "Id": "67346d02-4217-4767-b6b4-5c55822ba6a9",
             "Items": []
           },
           {
@@ -592,9 +545,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "d8cfaac4-fe56-4559-b1c1-c73a577d7745",
+            "Id": "14870499-63cb-4d52-b519-9925e23ef923",
             "Items": []
           },
           {
@@ -606,9 +560,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "29b52fe1-bf42-4509-a6c7-af2bc55ff4fc",
+            "Id": "e340309f-5ffa-44b9-808a-b60a95f19043",
             "Items": []
           },
           {
@@ -620,9 +575,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "90ced61a-8061-498e-a7e2-ad47c9c18e9d",
+            "Id": "56bc5851-4f8a-425e-89c5-cc3ac95180ac",
             "Items": []
           },
           {
@@ -634,9 +590,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "27a813d5-a15a-480a-a537-363a0499f0f4",
+            "Id": "a1f824db-19b9-4d66-a870-a9c0f16a62b3",
             "Items": []
           },
           {
@@ -648,9 +605,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "93aea7a8-56f4-4187-a577-479a9b502279",
+            "Id": "fc7711b1-30b6-46ab-aba0-d134292eb0fd",
             "Items": []
           },
           {
@@ -662,9 +620,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "3b2faefd-f233-4a03-b55d-15a9eea59c56",
+            "Id": "72a85703-81d5-4cfe-9038-b274349323b9",
             "Items": []
           },
           {
@@ -676,9 +635,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "072f03ef-3b96-49f6-a560-7525b4b793e3",
+            "Id": "e851f7bc-9d6b-41dc-bfc9-76ab4fbc4f69",
             "Items": []
           },
           {
@@ -690,9 +650,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "35113553-1769-4917-81bc-48afb2ef352b",
+            "Id": "d8e7bc71-43f7-484e-a4ef-c8c325d199b7",
             "Items": []
           },
           {
@@ -704,9 +665,10 @@
                 false
               ]
             },
+            "AccessMode": 2,
             "Value": false,
             "Name": "Bit",
-            "Id": "5efd59a3-6ea9-4ff9-9429-10dd7bb369d3",
+            "Id": "b575465d-397f-4f47-9063-1a9151ea7f08",
             "Items": []
           }
         ]
