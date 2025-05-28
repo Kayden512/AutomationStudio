@@ -20,7 +20,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace Automation.PluginCore.Control.PropertyGrid
 {
-    public class ReadOnlyValueHolderEditor : ViewModelBase, ITypeEditor
+    public class WriteableValueHolderEditor : ViewModelBase, ITypeEditor
     {
         PropertyItem Item { get; set; }
         public FrameworkElement ResolveEditor(PropertyItem propertyItem)
@@ -31,7 +31,7 @@ namespace Automation.PluginCore.Control.PropertyGrid
             combo.DataContext = this;
 
             List<INode> nodes = Extension.GetNodes(new Type[] { typeof(IValueHolder) });
-            nodes = nodes.FindAll(x => (x as IValueHolder).AccessMode == AccessMode.Read);
+            nodes = nodes.FindAll(x => (x as IValueHolder).AccessMode == AccessMode.Write);
             List<string> paths = nodes.Select(a => a.Path).ToList();
             combo.ItemsSource = paths;
 

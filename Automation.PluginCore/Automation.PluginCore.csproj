@@ -122,9 +122,10 @@
     <Compile Include="Base\PanelBase.cs" />
     <Compile Include="Base\ValueHolderBase.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="Control\PropertyGrid\LogicButton.cs" />
     <Compile Include="Control\PropertyGrid\MemoryButton.cs" />
-    <Compile Include="Control\PropertyGrid\WriteOnlyValueHolderEditor.cs" />
-    <Compile Include="Control\PropertyGrid\ReadOnlyValueHolderEditor.cs" />
+    <Compile Include="Control\PropertyGrid\WriteableValueHolderEditor.cs" />
+    <Compile Include="Control\PropertyGrid\ReadableValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderOptionEditor.cs" />
     <Compile Include="Control\PropertyGrid\RequestActionEditor.cs" />

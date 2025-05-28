@@ -1,4 +1,5 @@
-﻿using Automation.PluginCore.Interface;
+﻿using Automation.PluginCore.Control.PropertyGrid;
+using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Extension;
 using Newtonsoft.Json;
@@ -19,7 +20,8 @@ namespace Automation.PluginCore.Base.Machine
         [Browsable(false)]
         public NodeCollection Schedules { get; set; } = new NodeCollection();
 
-        [Browsable(false)]
+        //[Browsable(false)]
+        [Editor(typeof(LogicButton), typeof(LogicButton))]
         public NodeCollection Logic { get; set; } = new NodeCollection();
 
         [JsonIgnore]
