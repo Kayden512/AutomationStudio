@@ -1,58 +1,6 @@
 [
   {
     "$type": "Automation.PluginCore.Base.Machine.Machine, Automation.PluginCore",
-    "Schedules": [
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
-        "IsEnabled": true,
-        "Name": "Read SN",
-        "Id": "bef1b619-f900-407d-b40c-14d284c2ffc9",
-        "Items": [
-          {
-            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "VariableRef": [],
-            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
-            "IsEnabled": true,
-            "Name": "ReadBit",
-            "Id": "37b9c304-acd7-4f90-912b-7a11401f12db",
-            "Items": []
-          },
-          {
-            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "VariableRef": [],
-            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
-            "IsEnabled": true,
-            "Name": "WriteBit",
-            "Id": "1d1ad8da-4d44-45e9-8961-386926e98af3",
-            "Items": []
-          }
-        ]
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
-        "IsEnabled": true,
-        "Name": "Product In",
-        "Id": "df570378-02ef-421f-8ccf-1ac697149b48",
-        "Items": [
-          {
-            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
-            "VariableRef": [],
-            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
-            "IsEnabled": true,
-            "Name": "WriteBit",
-            "Id": "423637e4-5de0-4051-96a4-0f4cc12255d8",
-            "Items": []
-          }
-        ]
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
-        "IsEnabled": true,
-        "Name": "Align",
-        "Id": "74fc3ca1-72cd-499c-ae67-b77545858e57",
-        "Items": []
-      }
-    ],
     "Logic": [
       {
         "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
@@ -109,34 +57,19 @@
         "Flow": false,
         "Value": false,
         "VerticalLine": false,
-        "Id": "3522a011-b57e-4259-98d0-74b0c60f6a3f",
+        "Id": "5e598390-b9b3-42e7-8d63-dde515884882",
         "Items": []
       },
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.Coil, Automation.PluginCore",
+        "$type": "Automation.PluginCore.Base.Machine.Resource.Function, Automation.PluginCore",
         "Value": false,
-        "ReferencePath": "1fdc8a6b-bb73-410a-9855-274c3da04a17",
-        "Option": true,
-        "Name": "Coil",
+        "ReferencePath": "bef1b619-f900-407d-b40c-14d284c2ffc9",
+        "Name": "Function",
         "X": 7,
         "Y": 0,
         "Flow": false,
         "VerticalLine": false,
-        "Id": "5849f308-a49d-4705-88d4-5b4f1fd9b80b",
-        "Items": []
-      },
-      {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
-        "Type": 0,
-        "Value": false,
-        "ReferencePath": "1fdc8a6b-bb73-410a-9855-274c3da04a17",
-        "Option": true,
-        "Name": "Contact",
-        "X": 0,
-        "Y": 1,
-        "Flow": true,
-        "VerticalLine": false,
-        "Id": "c0f46a04-4853-4c66-b28a-247ed1f9cc88",
+        "Id": "a3ff5119-717d-4203-94bc-3bf3de5a1e2d",
         "Items": []
       },
       {
@@ -146,22 +79,78 @@
         "Y": 0,
         "Flow": false,
         "Value": false,
-        "VerticalLine": true,
-        "Id": "1aee7876-8238-4049-b498-3c72ceb3ec80",
+        "VerticalLine": false,
+        "Id": "266f7f99-d175-42db-bfd9-bc5830ceea78",
         "Items": []
       },
       {
-        "$type": "Automation.PluginCore.Base.Machine.Resource.Contact, Automation.PluginCore",
-        "Type": 1,
-        "Value": false,
-        "ReferencePath": "3da31507-f33f-44e0-af03-1b87832ea4ee",
-        "Option": true,
-        "Name": "Contact",
+        "$type": "Automation.PluginCore.Base.Machine.Resource.HorizontalLine, Automation.PluginCore",
+        "Name": "HorizontalLine",
         "X": 2,
         "Y": 0,
         "Flow": false,
+        "Value": false,
         "VerticalLine": false,
-        "Id": "630b44fc-d44b-4630-84f8-7f603acfc06e",
+        "Id": "a6e51b04-a65f-4397-a544-a1c0aa38c365",
+        "Items": []
+      }
+    ],
+    "IsRunning": false,
+    "Schedules": [
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "ActionStatus": 0,
+        "IsEnabled": true,
+        "Name": "Read SN",
+        "Id": "bef1b619-f900-407d-b40c-14d284c2ffc9",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "6f648c33-6585-44a2-a0d3-f7294e53644b",
+            "ActionStatus": 0,
+            "IsEnabled": true,
+            "Name": "ReadBit",
+            "Id": "37b9c304-acd7-4f90-912b-7a11401f12db",
+            "Items": []
+          },
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
+            "ActionStatus": 0,
+            "IsEnabled": true,
+            "Name": "WriteBit",
+            "Id": "1d1ad8da-4d44-45e9-8961-386926e98af3",
+            "Items": []
+          }
+        ]
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "ActionStatus": 0,
+        "IsEnabled": true,
+        "Name": "Product In",
+        "Id": "df570378-02ef-421f-8ccf-1ac697149b48",
+        "Items": [
+          {
+            "$type": "Automation.PluginCore.Base.Machine.Request, Automation.PluginCore",
+            "VariableRef": [],
+            "ActionPath": "2bdc4816-8c87-4819-8076-3573415cb427",
+            "ActionStatus": 0,
+            "IsEnabled": true,
+            "Name": "WriteBit",
+            "Id": "423637e4-5de0-4051-96a4-0f4cc12255d8",
+            "Items": []
+          }
+        ]
+      },
+      {
+        "$type": "Automation.PluginCore.Base.Machine.Schedule, Automation.PluginCore",
+        "ActionStatus": 0,
+        "IsEnabled": true,
+        "Name": "Align",
+        "Id": "74fc3ca1-72cd-499c-ae67-b77545858e57",
         "Items": []
       }
     ],
@@ -677,6 +666,9 @@
     "Actions": [
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Action.ReadBit, Automation.PluginCore",
+        "Address": 0,
+        "Bit": 0,
+        "ActionStatus": 4,
         "IsEnabled": true,
         "Name": "ReadBit",
         "Id": "6f648c33-6585-44a2-a0d3-f7294e53644b",
@@ -684,6 +676,10 @@
       },
       {
         "$type": "Automation.PluginCore.Base.Device.PLC.Action.WriteBit, Automation.PluginCore",
+        "Address": 0,
+        "Bit": 0,
+        "Value": true,
+        "ActionStatus": 4,
         "IsEnabled": true,
         "Name": "WriteBit",
         "Id": "2bdc4816-8c87-4819-8076-3573415cb427",

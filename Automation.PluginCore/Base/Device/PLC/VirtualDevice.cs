@@ -23,25 +23,16 @@ namespace Automation.PluginCore.Base.Device.PLC
 
         [Editor(typeof(MemoryButton), typeof(MemoryButton))]
         public NodeCollection Input { get; set; } = new NodeCollection();
+
         [Browsable(false)]
         public NodeCollection Output { get; set; } = new NodeCollection();
 
-        public override IEnumerable<IErrorItem> Validate()
+        public override void Connect()
         {
-            yield return new ErrorItem
-            {
-                Severity = ErrorSeverity.Error,
-                Code = "NODE000",
-                Message = "test error",
-                Node = this.Name,
-                Path = this.Path
-            };
-            foreach (IErrorItem item in base.Validate()) 
-            {
-                yield return item;
-            }
         }
-
+        public override void Disconnect()
+        {
+        }
         public VirtualDevice() : base()
         {
             Input.CollectionChanged += this.Items_CollectionChanged;

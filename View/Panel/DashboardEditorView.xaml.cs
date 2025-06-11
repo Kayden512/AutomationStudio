@@ -1,8 +1,5 @@
-﻿using Automation.PluginCore.Base;
-using Automation.PluginCore.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +16,11 @@ using System.Windows.Shapes;
 namespace AutomationStudio.View
 {
     /// <summary>
-    /// DeviceGroupView.xaml에 대한 상호 작용 논리
+    /// CustomScreenEditorView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class DeviceGroupView : UserControl
+    public partial class DashboardEditorView : UserControl
     {
-        public DeviceGroupView()
+        public DashboardEditorView()
         {
             InitializeComponent();
         }

@@ -7,6 +7,7 @@ using Automation.PluginCore.Util;
 using AutomationStudio.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,12 @@ using System.Windows.Input;
 
 namespace AutomationStudio.ViewModel
 {
-    public class CustomScreenEditorViewModel : PanelBase
+    public class DashboardEditorViewModel : PanelBase
     {
-        public override Type ViewType => typeof(CustomScreenEditorView);
+        public override Type ViewType => typeof(DashboardEditorView);
         public override string Name => "UI Editor";
+
+        public ObservableCollection<Type> Menu { get; set; } = new ObservableCollection<Type>();
 
         public override void OnAppend(object param)
         {

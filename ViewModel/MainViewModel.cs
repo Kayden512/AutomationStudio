@@ -13,6 +13,7 @@ using AvalonDock;
 using Automation.PluginCore;
 using System.Linq;
 using Automation.PluginCore.Util.Extension;
+using AutomationStudio.ViewModel.Panel;
 
 namespace AutomationStudio.ViewModel
 {
@@ -25,10 +26,11 @@ namespace AutomationStudio.ViewModel
         public ObservableCollection<IViewModel> Documents { get; protected set; } = new ObservableCollection<IViewModel>();
         public ObservableCollection<IViewModel> Panels { get; protected set; } = new ObservableCollection<IViewModel>();
 
-        public DeviceGroupViewModel deviceGroup { get; set; }
+        public DeviceManagerViewModel deviceManager { get; set; }
+        public WorkTableViewModel workTable { get; set; }
         public ActionViewModel action { get; set; }
         public ScheduleViewModel schedule { get; set; }
-        public CustomScreenEditorViewModel CustomScreenEditor { get; set; }
+        public DashboardEditorViewModel CustomScreenEditor { get; set; }
         public PropertyEditorViewModel propertyEditor { get; set; }
         public LogViewModel log { get; set; }
         public ErrorListViewModel errorList { get; set; }
@@ -96,23 +98,22 @@ namespace AutomationStudio.ViewModel
         }
         void LoadPanel()
         {
-            CustomScreenEditor = new CustomScreenEditorViewModel();
-            deviceGroup = new DeviceGroupViewModel();
+            CustomScreenEditor = new DashboardEditorViewModel();
+            deviceManager = new DeviceManagerViewModel();
+            workTable = new WorkTableViewModel();
             action = new ActionViewModel();
             schedule = new ScheduleViewModel();
             propertyEditor = new PropertyEditorViewModel();
             log = new LogViewModel();
             errorList = new ErrorListViewModel();
-            Panels = new ObservableCollection<IViewModel>() {  deviceGroup, schedule, propertyEditor, action , CustomScreenEditor, log, errorList };
+            Panels = new ObservableCollection<IViewModel>() { deviceManager, workTable, schedule, propertyEditor, action , CustomScreenEditor, log, errorList };
             foreach (INode node in Panels)
             {
                 node.PropertyChanged += viewModelPropertyChanged;
                 try
                 {
                     if (node is IViewModel viewModel)
-                    {
                         MapViewType(viewModel);
-                    }
                 }
                 catch(Exception ex)
                 {
@@ -121,8 +122,8 @@ namespace AutomationStudio.ViewModel
         }
         void LoadData()
         {
-            this.deviceGroup.LoadData();
-            this.deviceGroup.Menu = new ObservableCollection<Type>(PluginManager.LoadType(typeof(IDevice)));
+            this.deviceManager.LoadData();
+            this.deviceManager.Menu = new ObservableCollection<Type>(PluginManager.LoadType(typeof(IDevice)));
         }
         private void viewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -131,7 +132,7 @@ namespace AutomationStudio.ViewModel
             {
                 if (e.PropertyName == nameof(SelectedNode))
                     propertyEditor.SelectedObject = panel.SelectedNode;
-                if (sender == deviceGroup)
+                if (sender.Equals(deviceManager))
                 {
                     action.Device = panel.SelectedNode as IDevice;
                     if (panel.SelectedNode is IMachine)
@@ -141,7 +142,7 @@ namespace AutomationStudio.ViewModel
                 }
             }
             errorList.Errors.Clear();
-            foreach (var err in deviceGroup.CollectErrors())
+            foreach (var err in deviceManager.CollectErrors())
             {
                 errorList.Errors.Add((ErrorItem)err);
             }
@@ -167,60 +168,18 @@ namespace AutomationStudio.ViewModel
             }
         }
 
-        public List<IAction> GetActions(Type[] baseTypes = null)
+        public void AppendLog(ErrorSeverity level, string messege)
         {
-            List<IAction> actions = new List<IAction>();
-            foreach(IDevice device in deviceGroup.Items)
-            {
-                foreach(IAction action in device.Actions)
-                {
-                    if(baseTypes == null)
-                        actions.Add(action);
-                    else
-                    {
-                        foreach(Type t in baseTypes)
-                        {
-                            if(t.IsAssignableFrom(action.GetType()))
-                            {
-                                actions.Add(action);
-                            }
-                        }
-
-                    }
-                }
-                if (device is IMachine machine)
-                {
-                    foreach (IDevice innerDevice in machine.Items)
-                    {
-                        foreach (IAction action in innerDevice.Actions)
-                        {
-                            if (baseTypes == null)
-                                actions.Add(action);
-                            else
-                            {
-                                foreach (Type t in baseTypes)
-                                {
-                                    if (t.IsAssignableFrom(action.GetType()))
-                                    {
-                                        actions.Add(action);
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-            return actions;
+            this.log.Items.Add(new LogMessage(level, messege));
         }
-
+        
         public override INode FindNode(string path)
         {
             if (path == null) return null;
             var segments = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (segments[0] == "Device")
             {
-                return deviceGroup.FindNode(path);
+                return deviceManager.FindNode(path);
             }
             else if(segments[0] == "Custom")
             {

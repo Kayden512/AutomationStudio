@@ -28,6 +28,11 @@ namespace Automation.PluginCore.Util.Extension
             return _nodes.TryGetValue(id, out var node) ? node : null;
         }
 
+        public static void AppendLog(ErrorSeverity level, string messege)
+        {
+            Main.AppendLog(level, messege);
+        }
+
         public static List<INode> GetNodes(Type[] baseTypes = null)
         {
             List<INode> nodes = new List<INode>();

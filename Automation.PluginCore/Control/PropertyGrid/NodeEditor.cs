@@ -1,5 +1,6 @@
 ﻿using Automation.PluginCore.Base;
 using Automation.PluginCore.Base.Machine;
+using Automation.PluginCore.Base.Machine.Resource;
 using Automation.PluginCore.Interface;
 using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Behavior;
@@ -9,6 +10,7 @@ using Microsoft.Xaml.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,22 +21,29 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace Automation.PluginCore.Control.PropertyGrid
 {
-    public class RequestActionEditor : ViewModelBase, ITypeEditor
+    public class NodeEditor : ViewModelBase, ITypeEditor
     {
         PropertyItem Item { get; set; }
         public FrameworkElement ResolveEditor(PropertyItem propertyItem)
         {
             this.Item = propertyItem;
+
             ComboBox combo = new ComboBox();
             combo.DataContext = this;
 
-            List<INode> nodes = Extension.GetNodes(new Type[] { typeof(IAction) });
-            nodes = nodes.Where(n => !(n is Request || n is Schedule)).ToList();
+            Type InstanceType = this.Item.Instance.GetType();
+            PropertyInfo fieldInfo = InstanceType.GetProperty(this.Item.PropertyName);
+            NodeTypeAttribute nta = (NodeTypeAttribute)fieldInfo.GetCustomAttribute(typeof(NodeTypeAttribute));
+            if (nta == null) return combo;
+            List<INode> nodes = Extension.GetNodes(nta.IncludedTypes);
+            if(nta.ExcludedTypes != null)
+            {
+                nodes = nodes.Where(node => !nta.ExcludedTypes.Contains(node.GetType())).ToList();
+            }
             List<string> paths = nodes.Select(a => a.Path).ToList();
-
             combo.ItemsSource = paths;
 
-            var binding = new Binding("ActionPath")
+            var binding = new Binding(Item.PropertyName)
             {
                 Source = Item.Instance,
                 Mode = BindingMode.TwoWay,

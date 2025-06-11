@@ -92,7 +92,6 @@
   <ItemGroup>
     <Compile Include="Base\ActionBase.cs" />
     <Compile Include="Base\Device\PLC\Action\ReadBit.cs" />
-    <Compile Include="Base\Device\PLC\Action\TestAction.cs" />
     <Compile Include="Base\DeviceBase.cs" />
     <Compile Include="Base\Device\PLC\Action\WriteBit.cs" />
     <Compile Include="Base\Device\PLC\Resource\Bit.cs" />
@@ -103,7 +102,9 @@
     </Compile>
     <Compile Include="Base\Device\PLC\VirtualDevice.cs" />
     <Compile Include="Base\DocumentBase.cs" />
+    <Compile Include="Base\LogMessage.cs" />
     <Compile Include="Base\Machine\Action\Request.cs" />
+    <Compile Include="Base\Machine\Machine.Logic.cs" />
     <Compile Include="Base\Machine\Resource\Coil.cs" />
     <Compile Include="Base\Machine\Resource\Contact.cs" />
     <Compile Include="Base\Machine\Resource\EmptyLadder.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Base\ViewModelBase.cs" />
     <Compile Include="Control\PropertyGrid\LogicButton.cs" />
     <Compile Include="Control\PropertyGrid\MemoryButton.cs" />
+    <Compile Include="Control\PropertyGrid\NodeEditor.cs" />
     <Compile Include="Control\PropertyGrid\WriteableValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ReadableValueHolderEditor.cs" />
     <Compile Include="Control\PropertyGrid\ValueHolderEditor.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Util\Extension\Extension.Document.cs" />
     <Compile Include="Util\Extension\Extension.Node.cs" />
     <Compile Include="Util\FocusExtension.cs" />
+    <Compile Include="Util\NodeTypeAttribute.cs" />
     <Compile Include="Util\PluginManager.cs" />
     <Compile Include="Util\RelayCommand.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

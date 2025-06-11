@@ -37,6 +37,7 @@ namespace Automation.PluginCore.Base
         [Browsable(false)]
         public Guid Id { get; set; } = Guid.NewGuid();
 
+
         [JsonIgnore]
         [Browsable(false)]
         public bool IsSelected { get; set; } = false;

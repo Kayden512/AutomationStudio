@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -40,6 +41,15 @@ namespace Automation.PluginCore.Base.Machine
                 NotifyPropertyChanged(nameof(Action));
             }
         }
+
+        public override async Task<object> ExecuteAsync(CancellationToken token)
+        {
+            await Task.Delay(0);
+            if (this.Action == null) throw new InvalidOperationException("Action Null");
+            object result = await (Action.Parent as IDevice).ExecuteActionAsync(Action);
+            return result;
+        }
+
 
         public override void RemoveFromParent()
         {

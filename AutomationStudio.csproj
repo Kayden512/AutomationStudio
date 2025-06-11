@@ -124,16 +124,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\Panel\ActionViewModel.cs" />
-    <Compile Include="ViewModel\Panel\CustomScreenEditorViewModel.cs" />
+    <Compile Include="ViewModel\Panel\DashboardEditorViewModel.cs" />
     <Compile Include="ViewModel\Panel\ErrorListViewModel.cs" />
     <Compile Include="ViewModel\Panel\LogViewModel.cs" />
     <Compile Include="ViewModel\Panel\PropertyEditorViewModel.cs" />
     <Compile Include="ViewModel\Panel\ScheduleViewModel.cs" />
+    <Compile Include="ViewModel\Panel\WorkTableViewModel.cs" />
     <Compile Include="View\Panel\ActionView.xaml.cs">
       <DependentUpon>ActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Panel\CustomScreenEditorView.xaml.cs">
-      <DependentUpon>CustomScreenEditorView.xaml</DependentUpon>
+    <Compile Include="View\Panel\DashboardEditorView.xaml.cs">
+      <DependentUpon>DashboardEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Panel\ErrorListView.xaml.cs">
       <DependentUpon>ErrorListView.xaml</DependentUpon>
@@ -147,15 +148,18 @@
     <Compile Include="View\Panel\ScheduleView.xaml.cs">
       <DependentUpon>ScheduleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Panel\WorkTableView.xaml.cs">
+      <DependentUpon>WorkTableView.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Panel\ActionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Panel\CustomScreenEditorView.xaml">
+    <Page Include="View\Panel\DashboardEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Panel\DeviceGroupView.xaml">
+    <Page Include="View\Panel\DeviceManagerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,10 +181,10 @@
     </Compile>
     <Compile Include="Util\BoolToVisibilityConverter.cs" />
     <Compile Include="Util\PaneStyleSelector.cs" />
-    <Compile Include="ViewModel\Panel\DeviceGroupViewModel.cs" />
+    <Compile Include="ViewModel\Panel\DeviceManagerViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\Panel\DeviceGroupView.xaml.cs">
-      <DependentUpon>DeviceGroupView.xaml</DependentUpon>
+    <Compile Include="View\Panel\DeviceManagerView.xaml.cs">
+      <DependentUpon>DeviceManagerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -191,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panel\ScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Panel\WorkTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

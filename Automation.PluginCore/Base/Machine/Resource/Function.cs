@@ -1,5 +1,6 @@
 ﻿using Automation.PluginCore.Control.PropertyGrid;
 using Automation.PluginCore.Interface;
+using Automation.PluginCore.Util;
 using Automation.PluginCore.Util.Extension;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,7 +15,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace Automation.PluginCore.Base.Machine.Resource
 {
-    public class Function : LadderNodeBase, IReferenceHolder
+    public class Function : LadderNodeBase
     {
         bool _value;
         Guid _referencePath;
@@ -26,6 +27,10 @@ namespace Automation.PluginCore.Base.Machine.Resource
             set
             {
                 SetProperty(ref _value, value);
+                if(value == true && this.Reference != null)
+                {
+                    (Reference.Parent as IMachine).ExecuteActionAsync(this.Reference);
+                }
             }
         }
 
@@ -33,57 +38,27 @@ namespace Automation.PluginCore.Base.Machine.Resource
         [Category("Reference")]
         [DisplayName("Reference")]
         [RefreshProperties(RefreshProperties.All)]
-        [Editor(typeof(WriteableValueHolderEditor), typeof(WriteableValueHolderEditor))]
+        [NodeTypeAttribute(typeof(Schedule))]
+        [Editor(typeof(NodeEditor), typeof(NodeEditor))]
         public Guid ReferencePath
         {
             get => _referencePath;
             set
             {
-                IValueHolder prevHolder = Extension.GetNodeById(_referencePath) as IValueHolder;
-                if (prevHolder != null)
-                    prevHolder.ValueChanged -= Reference_ValueChanged;
-
                 SetProperty(ref _referencePath, value);
                 if (Guid.Empty.Equals(_reference) == false)
-                {
                     this.Activate();
-                }
             }
-        }
-
-        private void Reference_ValueChanged(object sender, object e)
-        {
-            this.Value = this.Option.Equals(e);
         }
 
         [JsonIgnore]
         [Browsable(false)]
-        public IValueHolder Reference { get; set; }
-
-        [PropertyOrder(1)]
-        [Category("Reference")]
-        [DisplayName("Option")]
-        [RefreshProperties(RefreshProperties.All)]
-        [Editor(typeof(ValueHolderOptionEditor), typeof(ValueHolderOptionEditor))]
-        public object Option { get; set; }
+        public Schedule Reference { get; set; }
 
         public override void Activate()
         {
-            this.Reference = Extension.GetNodeById(ReferencePath) as IValueHolder;
-            if (Reference != null)
-            {
-                if (Reference.Option != null && Option == null)
-                {
-                    var enumerator = Reference.Option.GetEnumerator();
-                    if (enumerator.MoveNext())
-                        this.Option = enumerator.Current;
-                }
-                Reference.ValueChanged += Reference_ValueChanged;
-            }
-
+            this.Reference = Extension.GetNodeById(ReferencePath) as Schedule;
             NotifyPropertyChanged(nameof(Reference));
-            NotifyPropertyChanged(nameof(Option));
-
             base.Activate();
         }
     }

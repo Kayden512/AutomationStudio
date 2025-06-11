@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
 using Automation.PluginCore.Util;
+using System.Threading;
 
 namespace AutomationStudio.ViewModel
 {
@@ -26,6 +27,35 @@ namespace AutomationStudio.ViewModel
         {
             get => _device;
             set => SetProperty(ref _device, value);
+        }
+
+        #region Command
+
+        public ICommand CmdExecute => new RelayCommand(OnExecute);
+        public ICommand CmdStop => new RelayCommand(OnStop);
+
+        #endregion
+
+        public async void OnExecute()
+        {
+            if (_device == null) return;
+            if (this.SelectedNode == null) return;
+            if (_device.Actions.Contains(this.SelectedNode) == false) return;
+            try
+            {
+                await _device.ExecuteActionAsync(this.SelectedNode as IAction);
+            }
+            catch (OperationCanceledException)
+            {
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void OnStop()
+        {
+            _device.StopAction();
         }
 
         public override void OnSelect(object param)

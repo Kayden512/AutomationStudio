@@ -107,6 +107,16 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Fill" Value="{StaticResource TextBrush}"/>
     </Style>
+
+    <Style TargetType="Path" x:Key="IconSmall">
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Fill" Value="{StaticResource TextBrush}"/>
+    </Style>
+
     <Style TargetType="CheckBox">
         <Setter Property="Template">
             <Setter.Value>

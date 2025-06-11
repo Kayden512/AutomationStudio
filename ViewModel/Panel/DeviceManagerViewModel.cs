@@ -9,6 +9,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,12 +18,54 @@ using System.Windows.Media;
 
 namespace AutomationStudio.ViewModel
 {
-    public class DeviceGroupViewModel : PanelBase
+    public class DeviceManagerViewModel : PanelBase
     {
-        public override Type ViewType => typeof(DeviceGroupView);
+        private CancellationTokenSource _cts;
+
+        public override Type ViewType => typeof(DeviceManagerView);
         public override string Name => "Device";
 
         public ObservableCollection<Type> Menu { get; set; } = new ObservableCollection<Type>();
+
+        #region Command
+        public ICommand CmdExecute => new RelayCommand(OnExecute);
+        public ICommand CmdStop => new RelayCommand(OnStop);
+        public ICommand CmdConnect => new RelayCommand(OnConnect);
+        public ICommand CmdDisconnect => new RelayCommand(OnDisconnect);
+        #endregion
+
+        public void OnExecute()
+        {
+
+        }
+        public void OnStop()
+        {
+
+        }
+
+        public async void OnConnect()
+        {
+            Task task = Task.Run(() =>
+            {
+                foreach (IDevice device in Items)
+                {
+                    device.TryConnect();
+                }
+            });
+            await task;
+        }
+
+        public async void OnDisconnect()
+        {
+            Task task = Task.Run(() =>
+            {
+                foreach (IDevice device in Items)
+                {
+                    device.TryDisconnect();
+                }
+            });
+            await task;
+        }
 
         public override void OnSelect(object param)
         {
@@ -72,6 +116,11 @@ namespace AutomationStudio.ViewModel
                     this.Items.Add(node);
                 }
             }
+        }
+
+        public DeviceManagerViewModel() : base()
+        {
+            _cts = new CancellationTokenSource();
         }
 
     }

@@ -9,6 +9,7 @@ namespace Automation.PluginCore.Interface
 {
     public interface IMachine : IDevice, IGroup
     {
+        bool IsRunning { get; }
         NodeCollection Schedules { get; }
         NodeCollection Logic { get; }
 

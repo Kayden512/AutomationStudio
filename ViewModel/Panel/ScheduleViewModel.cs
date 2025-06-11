@@ -22,6 +22,7 @@ namespace AutomationStudio.ViewModel
 
         public override string Name => "Schedule";
         public override Type ViewType => typeof(ScheduleView);
+
         LadderViewModel LogicEditor = new LadderViewModel();
 
         public ICommand CmdOpenEditor => new RelayCommand(OpenEditor);
@@ -35,6 +36,59 @@ namespace AutomationStudio.ViewModel
                 LogicEditor.Model = Machine;
             }
         }
+
+        #region Command
+
+        public ICommand CmdExecute => new RelayCommand(OnExecute);
+        public ICommand CmdStop => new RelayCommand(OnStop);
+        public ICommand CmdErase => new RelayCommand(OnErase);
+
+        #endregion
+        public async void OnExecute()
+        {
+            if (_machine == null) return;
+            if (this.SelectedNode == null) return;
+
+            try
+            {
+                if (this.SelectedNode is Schedule schedule)
+                {
+                    if (_machine.Schedules.Contains(this.SelectedNode) == false) return;
+                    await _machine.ExecuteActionAsync(this.SelectedNode as IAction);
+                }
+                else
+                {
+                    await _machine.ExecuteActionAsync(this.SelectedNode as IAction);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void OnStop()
+        {
+            _machine.StopAction();
+        }
+        public void OnErase()
+        {
+            if(this.SelectedNode == null) return;
+
+            if(this.SelectedNode is Schedule schedule)
+            {
+                foreach(IAction action in schedule.Items)
+                {
+                    action.ActionStatus = ActionStatus.None;
+                }
+                schedule.ActionStatus = ActionStatus.None;
+            }
+            else
+            {
+                (this.SelectedNode as IAction).ActionStatus = ActionStatus.None;
+            }
+        }
+
+
         public void OpenEditor()
         {
             if (Machine == null) return;

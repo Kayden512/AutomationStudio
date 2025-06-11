@@ -10,6 +10,7 @@ namespace Automation.PluginCore.Interface
     {
         void OpenDocument(IDocument document);
         void CloseDocument(IDocument document);
-        List<IAction> GetActions(Type[] baseTypes);
+
+        void AppendLog(ErrorSeverity level, string messege);
     }
 }
