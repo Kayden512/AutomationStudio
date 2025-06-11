@@ -123,6 +123,7 @@
     <Compile Include="Base\PanelBase.cs" />
     <Compile Include="Base\ValueHolderBase.cs" />
     <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="Base\WorkTable\WorkTable.cs" />
     <Compile Include="Control\PropertyGrid\LogicButton.cs" />
     <Compile Include="Control\PropertyGrid\MemoryButton.cs" />
     <Compile Include="Control\PropertyGrid\NodeEditor.cs" />

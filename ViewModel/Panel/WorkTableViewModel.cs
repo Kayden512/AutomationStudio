@@ -1,4 +1,5 @@
 ﻿using Automation.PluginCore.Base;
+using Automation.PluginCore.Base.WorkTable;
 using AutomationStudio.View;
 using AutomationStudio.View.Panel;
 using System;
@@ -13,5 +14,16 @@ namespace AutomationStudio.ViewModel.Panel
     {
         public override string Name => "WorkTable";
         public override Type ViewType => typeof(WorkTableView);
+        public override void OnSelect(object param)
+        {
+            SelectedNode = null;
+            if (param is WorkTable node)
+                SelectedNode = node;
+        }
+
+        public WorkTableViewModel() 
+        {
+            this.Items.Add(new WorkTable());
+        }
     }
 }
